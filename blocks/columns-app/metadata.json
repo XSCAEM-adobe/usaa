@@ -1,0 +1,16 @@
+{
+  "variantName": "columns-app",
+  "baseBlock": "columns",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "normal",
+    "purpose": "app-promo",
+    "imagePattern": "side-image",
+    "structure": "image-column + text-column-with-badges"
+  },
+  "contentPattern": "Dark two-column app promo: phone screenshot on one side; heading, text, app-store badges and QR code on the other.",
+  "usage": "Mobile-app spotlight on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["columns-app"]
+}

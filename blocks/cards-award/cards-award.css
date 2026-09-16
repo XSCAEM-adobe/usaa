@@ -1,0 +1,94 @@
+/*
+ * Cards Award block — a compact row of award / recognition badges, each with a
+ * logo image and a short caption (title + body). Values extracted from the
+ * usaa.com .affiliate-block computed styles; colors/fonts inherit brand tokens.
+ *
+ * Source layout: badges sit in a row bracketed by thin divider rules (1px solid
+ * #dadbdc top + bottom). Each card is a left-aligned vertical stack: logo on
+ * top, caption below, 16px gap. Cards have 32px vertical margin inside the rules.
+ */
+
+.cards-award ul {
+  list-style: none;
+  margin: 0;
+  padding: 32px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 24px;
+  align-items: start;
+  border-top: 1px solid rgb(218 219 220);
+  border-bottom: 1px solid rgb(218 219 220);
+}
+
+.cards-award li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+}
+
+.cards-award .cards-award-badge {
+  width: 150px;
+  max-width: 100%;
+}
+
+.cards-award .cards-award-badge picture,
+.cards-award .cards-award-badge img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  /* override the global `main img` CLS rule (aspect-ratio 16/9 + cover) which
+     would crop these badges — logos must show in full */
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* caption: the picture cell leaves an empty div; the text sits in a sibling div */
+.cards-award .cards-award-caption {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-award .cards-award-caption > div:empty {
+  display: none;
+}
+
+.cards-award .cards-award-caption p {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--usaa-navy-deep);
+}
+
+/* first paragraph is the award title (source: 22px medium) */
+.cards-award .cards-award-caption p:first-child {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.cards-award .cards-award-caption a:any-link {
+  color: var(--usaa-blue);
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.cards-award .cards-award-caption a:any-link:hover {
+  color: var(--usaa-blue-hover);
+  text-decoration-color: var(--usaa-blue-hover);
+}
+
+@media (width >= 600px) {
+  .cards-award ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-award ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

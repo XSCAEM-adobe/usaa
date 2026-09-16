@@ -1,0 +1,12 @@
+{
+  "type": "da",
+  "sites": {
+    "usaa": {
+      "previewOrg": "XSCAEM-adobe",
+      "previewSite": "usaa",
+      "contentHostUrl": "https://content.da.live/xscaem-adobe/usaa/",
+      "libraryUrl": "https://main--demo--scdemos.aem.live/docs/library/blocks.json",
+      "botProtected": true
+    }
+  }
+}

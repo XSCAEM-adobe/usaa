@@ -1,0 +1,120 @@
+/*
+ * Cards Quicklink — grid of compact quick-action tiles (icon + label link).
+ * Sits inside a `.section.dark` (navy #003065, white text). The tiles override
+ * that scheme: light cream cards with a red accent bar, dark navy title and a
+ * blue action link. Values extracted from source computed styles.
+ */
+
+.cards-quicklink ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Card tile */
+.cards-quicklink li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f5f5f0;
+  border: 1px solid #dadbdc;
+  border-bottom: 8px solid #960000;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: left;
+}
+
+/* Icon */
+.cards-quicklink .cards-quicklink-icon {
+  display: flex;
+  align-items: center;
+  min-height: 88px;
+}
+
+.cards-quicklink .cards-quicklink-icon picture,
+.cards-quicklink .cards-quicklink-icon img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+/* Label body */
+.cards-quicklink .cards-quicklink-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Title — dark navy, overriding the dark section's white text */
+.cards-quicklink .cards-quicklink-label h3 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #0b2237;
+}
+
+/* Action link row */
+.cards-quicklink .cards-quicklink-label p {
+  margin: 32px 0 0;
+}
+
+/* Reset the auto-decorated .button back to a plain blue text link with chevron */
+.cards-quicklink .cards-quicklink-label p.button-container {
+  margin: 32px 0 0;
+}
+
+.cards-quicklink .cards-quicklink-label a.button:any-link,
+.cards-quicklink .cards-quicklink-label a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+  color: #225a97;
+  white-space: normal;
+}
+
+.cards-quicklink .cards-quicklink-label a.button:any-link::after {
+  /* chevron indicator */
+  content: '\203A';
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cards-quicklink .cards-quicklink-label a.button:any-link:hover,
+.cards-quicklink .cards-quicklink-label a:any-link:hover {
+  color: #0058a0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .cards-quicklink ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-quicklink ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+  }
+}

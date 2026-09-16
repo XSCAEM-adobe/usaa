@@ -1,0 +1,57 @@
+/*
+ * brand.css — USAA brand design tokens (extracted from https://www.usaa.com/)
+ * Imported first in styles.css so these values override the boilerplate defaults.
+ * USAA's production font is the proprietary "Garrison12"/"Gotham Narrow"; for this
+ * demo we fall back to the bundled Montserrat (geometric sans) as the closest match.
+ */
+
+:root,
+:host {
+  /* USAA brand palette */
+  --usaa-navy: #003065;
+  --usaa-navy-deep: #0b2237;
+  --usaa-blue: #225a97;
+  --usaa-blue-hover: #0058a0;
+  --usaa-grey-bg: #f4f6f8;
+  --usaa-accent: #fef6e6;
+  --usaa-cream: #f4f1e9;
+  --usaa-gold: #d8c47f;
+
+  /* fonts — USAA uses a sans-serif for both headings and body */
+  --font-family: montserrat, "Gotham Narrow", arial, sans-serif;
+  --body-font-family: var(--font-family);
+  --heading-font-family: var(--font-family);
+
+  /* core colors */
+  --background-color: #fff;
+  --color-text: var(--usaa-navy-deep);
+  --text-color: var(--usaa-navy-deep);
+  --color-link: var(--usaa-blue);
+  --link-color: var(--usaa-blue);
+  --color-link-hover: var(--usaa-blue-hover);
+  --link-hover-color: var(--usaa-blue-hover);
+
+  /* heading sizes (desktop values applied in the wide breakpoint below) */
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 28px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
+
+  /* section background variants used by section-metadata styles */
+  --section-light-bg: var(--usaa-grey-bg);
+  --section-dark-bg: var(--usaa-navy);
+  --section-accent-bg: var(--usaa-accent);
+  --section-highlight-bg: var(--usaa-grey-bg);
+}
+
+@media (width >= 900px) {
+  :root,
+  :host {
+    --heading-font-size-xxl: 44px;
+    --heading-font-size-xl: 32px;
+    --heading-font-size-l: 26px;
+    --heading-font-size-m: 22px;
+  }
+}

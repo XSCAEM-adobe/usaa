@@ -50,15 +50,15 @@ header {
 }
 
 header .nav-wrapper {
-  background-color: light-dark(#faf8f5, var(--color-obsidian));
+  background-color: var(--usaa-navy, #12395b);
   width: 100%;
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  border-bottom: var(--border-heritage);
-  box-shadow: none;
+  border-bottom: 0;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
 }
 
 /* mobile: base layout */
@@ -597,7 +597,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul a.button:any-li
 /* tools – mobile */
 header nav .nav-tools {
   grid-area: tools;
-  justify-self: end;
+  place-self: center end;
   display: flex;
   align-items: center;
   gap: var(--nav-gap);
@@ -850,6 +850,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   /* sections: nav items flow from logo, horizontal nav with dropdowns */
   header nav .nav-sections {
     flex: 1 1 auto;
+    align-self: center;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -1327,4 +1328,113 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   header nav {
     max-width: 1264px;
   }
+}
+
+/* ==========================================================================
+   USAA brand header overrides — navy bar, white nav text, blue accents.
+   Appended last to win over the boilerplate "heritage" defaults above.
+   ========================================================================== */
+
+/* Whole nav bar defaults to white text on the navy background */
+header nav.usaa-nav,
+header nav.usaa-nav a:any-link {
+  color: #fff;
+}
+
+/* Brand logo sized ~48px like source */
+header nav.usaa-nav .nav-brand :is(img, svg) {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Primary nav items: white, medium weight, normal case */
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li,
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li > a:any-link {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li:hover,
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li > a:any-link:hover {
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* Dropdown / megamenu panels: white background, navy readable text */
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul {
+  background-color: #fff;
+  border-top: 3px solid var(--usaa-blue, #225a97);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+}
+
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul a:any-link {
+  color: var(--usaa-navy-deep, #0b2237);
+}
+
+header nav.usaa-nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul a:any-link:hover {
+  color: var(--usaa-blue, #225a97);
+  text-decoration: underline;
+}
+
+/* Tools list: no bullet markers */
+header nav.usaa-nav .nav-tools ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+}
+
+/* Tools (Log On / auth login) — white bordered pill CTA.
+   Matches both the static USAA "Log On" link and the demo auth login button
+   (.nav-auth-link, which the boilerplate injects/adopts). */
+header nav.usaa-nav .nav-tools a[href*="logon" i],
+header nav.usaa-nav .nav-tools a.nav-auth-link:any-link {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  background: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+}
+
+header nav.usaa-nav .nav-tools a[href*="logon" i]:hover,
+header nav.usaa-nav .nav-tools a.nav-auth-link:any-link:hover {
+  background-color: #fff;
+  color: var(--usaa-navy, #12395b);
+}
+
+/* Search + Chat tool links: white icon + label, sitting before Log On */
+header nav.usaa-nav .nav-tools ul li a[href*="search" i],
+header nav.usaa-nav .nav-tools ul li a[href*="contact" i] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+header nav.usaa-nav .nav-tools ul li a[href*="search" i] .icon,
+header nav.usaa-nav .nav-tools ul li a[href*="contact" i] .icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+}
+
+header nav.usaa-nav .nav-tools ul li a[href*="search" i] .icon img,
+header nav.usaa-nav .nav-tools ul li a[href*="contact" i] .icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
 }

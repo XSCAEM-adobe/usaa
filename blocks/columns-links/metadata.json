@@ -1,0 +1,16 @@
+{
+  "variantName": "columns-links",
+  "baseBlock": "columns",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "link-directory",
+    "imagePattern": "none",
+    "structure": "columns-of-heading-plus-linklist"
+  },
+  "contentPattern": "Multiple columns of categorized link lists (e.g. Insurance, Banking, Investing, Advice, Military Life, Contact us), each with a heading and a list of links.",
+  "usage": "\"Other products and services\" wayfinding directory on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["columns-links"]
+}

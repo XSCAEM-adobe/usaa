@@ -1,0 +1,80 @@
+/*
+ * Cards Feature block — grid of membership-benefit features.
+ * Each card is a horizontal row: illustration icon (72px) on the left,
+ * heading + short text on the right. Values extracted from usaa.com source
+ * computed styles; colors/fonts inherit from the global brand tokens.
+ */
+
+.cards-feature ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-feature li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.cards-feature .cards-feature-icon {
+  flex: 0 0 72px;
+}
+
+.cards-feature .cards-feature-icon picture,
+.cards-feature .cards-feature-icon img {
+  display: block;
+  width: 72px;
+  height: auto;
+}
+
+.cards-feature .cards-feature-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-feature .cards-feature-body > * {
+  margin: 0;
+}
+
+.cards-feature h3 {
+  font-size: var(--heading-font-size-l); /* 24px */
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--usaa-navy);
+  margin: 0 0 16px;
+}
+
+.cards-feature .cards-feature-body p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--usaa-navy-deep);
+  margin: 8px 0;
+}
+
+.cards-feature .cards-feature-body p:first-of-type {
+  margin-top: 0;
+}
+
+.cards-feature .cards-feature-body a:any-link {
+  color: var(--usaa-blue);
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.cards-feature .cards-feature-body a:any-link:hover {
+  color: var(--usaa-blue-hover);
+  text-decoration-color: var(--usaa-blue-hover);
+}
+
+@media (width >= 900px) {
+  .cards-feature ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

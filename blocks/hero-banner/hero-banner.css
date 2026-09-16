@@ -1,0 +1,135 @@
+/* Hero Banner block
+ * USAA home hero: a two-column split — a navy content panel (gold headline,
+ * red rule, white subhead/body) beside a full-height photo.
+ * Values extracted from the source computed styles / captured screenshot.
+ *
+ * Decorated DOM:
+ *   .hero-banner
+ *     .hero-banner-bg      > div > picture > img   (photo)
+ *     .hero-banner-content > div > h1, h2, p        (navy panel copy)
+ */
+
+.hero-banner {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* --- Content panel (navy) --- */
+.hero-banner .hero-banner-content {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 24px;
+  background-color: var(--usaa-navy);
+  color: #fff;
+}
+
+.hero-banner.no-image .hero-banner-content {
+  order: 0;
+}
+
+/* the extra wrapper div EDS keeps around the cell content */
+.hero-banner .hero-banner-content > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-banner .hero-banner-content h1 {
+  margin: 0;
+  color: #d0be7a;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+/* red rule that sits under the gold headline in the source */
+.hero-banner .hero-banner-content h1::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 4px;
+  margin-top: 20px;
+  background-color: #960000;
+}
+
+.hero-banner .hero-banner-content h2 {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hero-banner .hero-banner-content p {
+  margin: 0;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.hero-banner .hero-banner-content sup {
+  font-size: 0.6em;
+  vertical-align: super;
+}
+
+.hero-banner .hero-banner-content a:not(.button) {
+  color: #fff;
+}
+
+/* --- Photo --- */
+.hero-banner .hero-banner-bg {
+  order: 2;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.hero-banner .hero-banner-bg > div,
+.hero-banner .hero-banner-bg picture {
+  display: block;
+  height: 100%;
+}
+
+.hero-banner .hero-banner-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+/* --- Optional inline input + CTA row (ZIP lookup) --- */
+.hero-banner .hero-banner-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.hero-banner .hero-banner-action input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 12px;
+}
+
+.hero-banner .button-container {
+  margin: 0;
+}
+
+/* --- Desktop: side-by-side split, content left / photo right --- */
+@media (width >= 900px) {
+  .hero-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    min-height: 420px;
+  }
+
+  .hero-banner .hero-banner-content {
+    grid-area: 1 / 1;
+    padding: 56px 56px 56px 48px;
+  }
+
+  .hero-banner .hero-banner-bg {
+    grid-area: 1 / 2;
+  }
+}

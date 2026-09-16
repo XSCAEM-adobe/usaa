@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-award",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "award-badges",
+    "imagePattern": "logo",
+    "structure": "image + caption"
+  },
+  "contentPattern": "Compact row of award / recognition badges, each with a logo image and a short caption.",
+  "usage": "Awards and recognition section on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-award"]
+}

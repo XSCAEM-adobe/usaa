@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-article",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "article-teaser",
+    "imagePattern": "top-image",
+    "structure": "image + heading + description + cta"
+  },
+  "contentPattern": "Grid of article teaser cards, each with a top image, a heading, an optional description and a call-to-action link.",
+  "usage": "Protection articles and Advice article teasers on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-article"]
+}

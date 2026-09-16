@@ -1,0 +1,16 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "background",
+    "structure": "heading + subheading + input + CTA"
+  },
+  "contentPattern": "Full-bleed background image with a headline, subheading, an optional inline input (ZIP lookup) and a call-to-action button.",
+  "usage": "Primary page banner at the top of the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["hero-banner"]
+}

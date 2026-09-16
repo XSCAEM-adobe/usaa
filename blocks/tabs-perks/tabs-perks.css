@@ -1,0 +1,175 @@
+/* Tabs Perks block — USAA Perks everyday-savings tabbed catalog.
+   Values extracted from source computed styles (https://www.usaa.com/),
+   mapped to brand.css tokens where they match. Mobile-first. */
+
+/* ---- Tab list ------------------------------------------------------ */
+.tabs-perks .tabs-perks-list {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid #dadbdc;
+  margin-bottom: 24px;
+}
+
+.tabs-perks .tabs-perks-tab {
+  position: relative;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 12px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--usaa-navy-deep);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tabs-perks .tabs-perks-tab.is-active {
+  color: var(--usaa-blue);
+}
+
+/* active-tab indicator: 4px brand-blue underline flush with the list border */
+.tabs-perks .tabs-perks-tab.is-active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  border-bottom: 4px solid var(--usaa-blue);
+  border-radius: 4px 4px 0 0;
+}
+
+.tabs-perks .tabs-perks-tab:focus-visible {
+  outline: 2px solid var(--usaa-blue);
+  outline-offset: -2px;
+}
+
+/* ---- Panels -------------------------------------------------------- */
+.tabs-perks .tabs-perks-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-perks .tabs-perks-panel[aria-hidden='false'] {
+  display: block;
+}
+
+/* panel intro heading */
+.tabs-perks .tabs-perks-intro h2 {
+  margin: 0 0 16px;
+  color: var(--usaa-navy);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* ---- Card grid ----------------------------------------------------- */
+.tabs-perks .tabs-perks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.tabs-perks .tabs-perks-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #dadbdc;
+  border-radius: 8px;
+  background-color: var(--background-color);
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+  text-align: left;
+}
+
+.tabs-perks .tabs-perks-card :is(picture, img) {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.tabs-perks .tabs-perks-card h3 {
+  margin: 0 0 16px;
+  color: var(--usaa-navy-deep);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.tabs-perks .tabs-perks-card p {
+  margin: 8px 0;
+  color: var(--usaa-navy-deep);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.tabs-perks .tabs-perks-card p:last-child {
+  margin-top: auto;
+}
+
+/* card icon paragraph (EDS wraps the image in a <p>) */
+.tabs-perks .tabs-perks-card p.tabs-perks-card-icon {
+  margin: 0 0 12px;
+}
+
+/* Source CTAs are plain blue text links with a chevron, not buttons.
+   Reset EDS button auto-decoration back to that treatment. */
+.tabs-perks .tabs-perks-card p.button-container {
+  margin: 16px 0 0;
+}
+
+.tabs-perks .tabs-perks-card a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--usaa-blue);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: normal;
+  text-transform: none;
+  text-decoration: none;
+  overflow: visible;
+}
+
+.tabs-perks .tabs-perks-card a.button:any-link::after {
+  content: '\203A'; /* chevron */
+  position: static;
+  transform: none;
+  background: none;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.tabs-perks .tabs-perks-card a.button:any-link:hover,
+.tabs-perks .tabs-perks-card a.button:any-link:focus-visible {
+  background: none;
+  box-shadow: none;
+  transform: none;
+  color: var(--usaa-blue-hover);
+  text-decoration: underline;
+}
+
+/* ---- Desktop ------------------------------------------------------- */
+@media (width >= 900px) {
+  .tabs-perks .tabs-perks-intro h2 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .tabs-perks .tabs-perks-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+  }
+}

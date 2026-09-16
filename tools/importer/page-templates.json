@@ -1,0 +1,263 @@
+{
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://www.usaa.com/"
+      ],
+      "representativeUrl": "https://www.usaa.com/",
+      "description": "To be named in naming step",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "#mkt_mainBnr"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            "#mkt_mainCards"
+          ]
+        },
+        {
+          "name": "columns-spotlight",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            ".feature-collection-authored-content"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.card-pack-authored-content.aem-GridColumn.aem-GridColumn--default--12",
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.article-teaser.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "tabs-perks",
+          "instances": [
+            ".usaa-aem-tab-block-enhanced"
+          ]
+        },
+        {
+          "name": "cards-award",
+          "instances": [
+            ".affiliate-block"
+          ]
+        },
+        {
+          "name": "columns-app",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "cards-quicklink",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.card-pack-authored-content.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "columns-links",
+          "instances": [
+            ".usaa-aem-wayfinding-block"
+          ]
+        }
+      ],
+      "urlPattern": "/",
+      "sections": [
+        {
+          "id": "s1",
+          "name": "membership-promo-strip",
+          "selector": [
+            "#mkt_adBand"
+          ],
+          "style": "accent",
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "s2",
+          "name": "main-banner",
+          "selector": [
+            "#mkt_mainBnr"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s3",
+          "name": "banner-product-cards",
+          "selector": [
+            "#mkt_mainCards"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-product"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s4",
+          "name": "medicare-callout",
+          "selector": [
+            ".callout-block-authored-content"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "s5",
+          "name": "century-of-service",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-text-block.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": "highlight",
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "s6",
+          "name": "who-can-join",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-spotlight"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s7",
+          "name": "membership-benefits",
+          "selector": [
+            ".feature-collection-authored-content"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s8",
+          "name": "protection-articles",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.card-pack-authored-content.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-article"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s9",
+          "name": "usaa-perks",
+          "selector": [
+            ".usaa-aem-tab-block-enhanced"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-perks"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s10",
+          "name": "awards",
+          "selector": [
+            ".affiliate-block"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-award"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s11",
+          "name": "advice-articles",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.article-teaser.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-article"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s12",
+          "name": "mobile-app",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": "dark",
+          "blocks": [
+            "columns-app"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s13",
+          "name": "how-can-we-help",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.card-pack-authored-content.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": "dark",
+          "blocks": [
+            "cards-quicklink"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s14",
+          "name": "other-products-wayfinding",
+          "selector": [
+            ".usaa-aem-wayfinding-block"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-links"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "banking",
+      "urls": [
+        "https://www.usaa.com/banking/checking?wa_ref=pub_home_banner_bank_checking"
+      ],
+      "representativeUrl": "https://www.usaa.com/banking/checking?wa_ref=pub_home_banner_bank_checking",
+      "description": "To be named in naming step",
+      "blocks": [],
+      "urlPattern": "/banking/*"
+    },
+    {
+      "name": "banking-2",
+      "urls": [
+        "https://www.usaa.com/banking/credit-cards-public?wa_ref=pub_home_banner_bank_credit_card"
+      ],
+      "representativeUrl": "https://www.usaa.com/banking/credit-cards-public?wa_ref=pub_home_banner_bank_credit_card",
+      "description": "To be named in naming step",
+      "blocks": [],
+      "urlPattern": "/banking/*"
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}
