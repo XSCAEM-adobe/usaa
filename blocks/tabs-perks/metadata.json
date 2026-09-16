@@ -1,0 +1,16 @@
+{
+  "variantName": "tabs-perks",
+  "baseBlock": "tabs",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "tabbed-catalog",
+    "imagePattern": "icon",
+    "structure": "tab-labels + panels-with-card-grid"
+  },
+  "contentPattern": "Tabbed interface with several switchable panels, each containing a grid of savings-category cards. Each authored row is one tab: first cell is the label, second cell is the panel content.",
+  "usage": "USAA Perks everyday-savings tabbed catalog on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["tabs-perks"]
+}

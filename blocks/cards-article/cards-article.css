@@ -1,0 +1,138 @@
+/*
+ * Cards Article — photo article-teaser cards (top image + H3 + description + CTA).
+ * Design migrated from https://www.usaa.com/ ("Advice you can count on" and
+ * "Protection for wherever life takes you" teaser packs).
+ * Values are extracted from source computed styles; scoped to .cards-article.
+ */
+
+.cards-article ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-article li {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* Top image: full-bleed, 16:9, subtle rounded corners (source uses 6px radius) */
+.cards-article .cards-article-image {
+  line-height: 0;
+}
+
+.cards-article .cards-article-image picture,
+.cards-article .cards-article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cards-article .cards-article-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* The body wraps the text cell; flatten spacing so source margins drive rhythm */
+.cards-article .cards-article-body > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-article .cards-article-body h3 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--usaa-navy-deep);
+  margin: 24px 0 16px;
+}
+
+.cards-article .cards-article-body p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--usaa-navy-deep);
+  margin: 16px 0 0;
+}
+
+/* CTA: source renders a plain tertiary text link (blue + chevron), NOT a filled
+   button. EDS auto-decorates the standalone link into a.button, so reset it. */
+.cards-article .cards-article-body .button-container {
+  margin: 16px 0 0;
+}
+
+main .cards-article a.button:any-link,
+main .cards-article a.button:any-link:hover,
+main .cards-article a.button:any-link:focus-visible {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  transform: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  text-decoration: none;
+  color: var(--usaa-blue);
+}
+
+main .cards-article a.button:any-link:hover,
+main .cards-article a.button:any-link:focus-visible {
+  color: var(--usaa-blue-hover);
+  text-decoration: underline;
+}
+
+/* Chevron affordance matching the source "Read article ›" links */
+main .cards-article a.button:any-link::after {
+  content: '\203A';
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+main .cards-article a.button:any-link:hover::after {
+  transform: translateX(3px);
+}
+
+/* Two variants share this block on the same page: Protection = 2 cards,
+   Advice = 3 cards. Use count-aware grids so a 2-card pack never stretches
+   into a 3-column track (which would leave an empty gap). */
+
+/* Tablet+: everything goes 2-up */
+@media (width >= 600px) {
+  .cards-article ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: only packs with 3+ cards become 3-up; 2-card packs stay 2-up */
+@media (width >= 900px) {
+  .cards-article ul:has(> li:nth-child(3)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

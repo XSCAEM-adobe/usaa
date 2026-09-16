@@ -1,0 +1,105 @@
+/* Cards Product block — navy product cards below the hero, matching usaa.com:
+   - card: navy #003065 background, white text, 4px radius
+   - icon + heading on the top row, body copy below, gold button CTA at the base
+   - icon: 48px square; heading: 24px/700 white; body: 16px white
+   - CTA: solid gold button with navy label */
+
+.cards-product ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards-product li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 8px 16px;
+  padding: 24px;
+  background-color: var(--usaa-navy);
+  border-radius: 4px;
+  color: #fff;
+}
+
+.cards-product .cards-product-icon {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.cards-product .cards-product-icon picture,
+.cards-product .cards-product-icon img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.cards-product .cards-product-body {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cards-product .cards-product-body > * {
+  margin: 0;
+}
+
+.cards-product .cards-product-body h2 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+/* Body copy carries a short red accent bar on its left edge, like the source */
+.cards-product .cards-product-body p:not(.button-container) {
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+  color: #fff;
+  padding-left: 12px;
+  border-left: 3px solid #960000;
+}
+
+/* CTA: compact, centered gold button with navy label */
+.cards-product .cards-product-body p.button-container {
+  margin-top: auto;
+  text-align: center;
+}
+
+.cards-product .cards-product-body a.button:any-link {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid var(--usaa-gold, #d8c47f);
+  border-radius: 4px;
+  background: var(--usaa-gold, #d8c47f);
+  color: var(--usaa-navy-deep);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.cards-product .cards-product-body a.button:any-link:hover,
+.cards-product .cards-product-body a.button:any-link:focus-visible {
+  background: #cbb56a;
+  border-color: #b6a04f;
+  color: var(--usaa-navy-deep);
+  text-decoration: none;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (width >= 900px) {
+  .cards-product ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}

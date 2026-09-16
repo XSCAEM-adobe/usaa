@@ -1,0 +1,151 @@
+/*
+ * Columns Spotlight — "Who can join USAA" style two-column spotlight.
+ * Values extracted from the source computed styles (usaa.com feature-spotlight).
+ * Full-bleed light-grey band, text column beside a rounded 16:9 photo.
+ */
+
+/* Full-width light-grey band (source: rds-globals__background-secondary #f3f3f3). */
+.columns-spotlight {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-block: 48px;
+  background-color: var(--usaa-grey-bg);
+}
+
+/* Re-constrain inner content to the page grid width and stack on mobile. */
+.columns-spotlight > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+  max-width: var(--grid-container-width);
+  margin-inline: auto;
+  padding-inline: var(--content-padding-inline);
+}
+
+/* Text column */
+.columns-spotlight .columns-spotlight-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-spotlight .columns-spotlight-text > * {
+  margin: 0;
+}
+
+.columns-spotlight .columns-spotlight-text h2 {
+  margin-bottom: 24px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--usaa-navy);
+}
+
+.columns-spotlight .columns-spotlight-text p {
+  margin-block: 8px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--usaa-navy-deep);
+}
+
+.columns-spotlight .columns-spotlight-text ul {
+  margin: 8px 0 0;
+  padding-inline-start: 20px;
+}
+
+.columns-spotlight .columns-spotlight-text li {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--usaa-navy-deep);
+}
+
+/* CTA row: gold primary button beside a plain-text tertiary link. */
+.columns-spotlight .columns-spotlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.columns-spotlight .columns-spotlight-actions .button-container {
+  margin: 0;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* Primary CTA (first) — gold fill, navy label, subtle olive border. */
+.columns-spotlight .columns-spotlight-actions .button-container:first-child a.button:any-link {
+  padding: 11px 24px;
+  border: 2px solid #919159;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: #d0be7a;
+  background-image: none;
+  color: var(--usaa-navy);
+  text-transform: none;
+}
+
+/* Tertiary CTA (last) — plain blue text link with a trailing chevron. */
+.columns-spotlight .columns-spotlight-actions .button-container:last-child a.button:any-link {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: transparent;
+  background-image: none;
+  color: var(--usaa-blue);
+}
+
+.columns-spotlight .columns-spotlight-actions .button-container:last-child a.button:any-link::after {
+  content: '›';
+  margin-left: 4px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.columns-spotlight .columns-spotlight-actions .button-container:first-child a.button:any-link:hover,
+.columns-spotlight .columns-spotlight-actions .button-container:first-child a.button:any-link:focus-visible {
+  background-color: #c3ae63;
+  border-color: #7f7f4d;
+  color: var(--usaa-navy);
+}
+
+.columns-spotlight .columns-spotlight-actions .button-container:last-child a.button:any-link:hover,
+.columns-spotlight .columns-spotlight-actions .button-container:last-child a.button:any-link:focus-visible {
+  background-color: transparent;
+  color: var(--usaa-blue-hover);
+  text-decoration: underline;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* Image column */
+.columns-spotlight .columns-spotlight-img picture,
+.columns-spotlight .columns-spotlight-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.columns-spotlight .columns-spotlight-img img {
+  border-radius: 8px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  .columns-spotlight > div {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .columns-spotlight .columns-spotlight-text h2 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+}

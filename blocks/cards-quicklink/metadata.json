@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-quicklink",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "quick-actions",
+    "imagePattern": "icon",
+    "structure": "icon + label-link"
+  },
+  "contentPattern": "Grid of six compact quick-action tiles, each with an icon and a label link, on a dark background.",
+  "usage": "\"How can we help?\" quick-action tiles on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-quicklink"]
+}

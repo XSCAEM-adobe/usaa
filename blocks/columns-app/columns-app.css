@@ -1,0 +1,101 @@
+/* Columns App block — dark two-column app-promo.
+   Values extracted from the source "usaa-aem-spotlight" (mobile-app) instance.
+   The block sits in a section.dark (navy #003065), so text/badges render light;
+   white text is applied globally by the section, so only layout, spacing and
+   sizing live here (plus explicit whites where the global rule needs help). */
+
+.columns-app > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.columns-app .columns-app-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.columns-app .columns-app-text > * {
+  margin: 0;
+}
+
+/* Heading — source h2: 40px / 44px, weight 700 */
+.columns-app .columns-app-text h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+/* Bullet list — source: 18px / 28px, custom bullet, 8px vertical rhythm */
+.columns-app .columns-app-text ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--body-font-size-l);
+  line-height: 28px;
+}
+
+.columns-app .columns-app-text li {
+  position: relative;
+  margin: 8px 0;
+  padding-left: 18px;
+  font-size: var(--body-font-size-l);
+  line-height: 28px;
+  list-style: none;
+}
+
+.columns-app .columns-app-text li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+}
+
+/* Phone / feature image — source: fills column, 8px radius */
+.columns-app .columns-app-img picture,
+.columns-app .columns-app-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* App-store badges — source: row, 32px top gap, 16px between, badge height 48px */
+.columns-app .columns-app-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.columns-app .columns-app-badges a {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.columns-app .columns-app-badges img {
+  height: 48px;
+  width: auto;
+  max-width: none;
+  border-radius: 0;
+
+  /* override the global `main img` CLS rule (aspect-ratio 16/9 + cover) which
+     crops the wide app-store badges — they must show in full */
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+@media (width >= 900px) {
+  .columns-app > div {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .columns-app .columns-app-text h2 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+}

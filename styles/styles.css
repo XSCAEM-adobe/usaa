@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -108,19 +110,19 @@
   /* semantic / named colors */
   --color-light: rgb(255 255 255);
   --color-dark: rgb(0 0 0);
-  --color-text: light-dark(var(--color-ink), var(--color-parchment));
-  --color-link: light-dark(var(--color-ink), var(--color-parchment));
-  --color-link-hover: light-dark(var(--color-rust), var(--color-gold));
-  --color-brand: var(--color-rust);
-  --color-accent: var(--color-gold);
-  --color-shaded: light-dark(var(--color-parchment), var(--color-card-dark));
+  --color-text: var(--usaa-navy-deep);
+  --color-link: var(--usaa-blue);
+  --color-link-hover: var(--usaa-blue-hover);
+  --color-brand: var(--usaa-navy);
+  --color-accent: var(--usaa-blue);
+  --color-shaded: var(--usaa-grey-bg);
 
-  /* fonts */
-  --font-family: montserrat, "Trebuchet MS", sans-serif;
-  --font-family-serif: "EB Garamond", georgia, serif;
+  /* fonts — USAA uses a geometric sans-serif for both headings and body */
+  --font-family: montserrat, "Gotham Narrow", arial, sans-serif;
+  --font-family-serif: montserrat, "Gotham Narrow", arial, sans-serif;
   --font-family-mono: "JetBrains Mono", "Courier New", monospace;
   --body-font-family: var(--font-family);
-  --heading-font-family: var(--font-family-serif);
+  --heading-font-family: var(--font-family);
 
   /* heading sizes */
   --heading-font-size-xxl: 32.44px;
@@ -147,7 +149,7 @@
   --header-height: var(--nav-height);
 
   /* boilerplate compatibility – map to design tokens */
-  --background-color: light-dark(var(--color-parchment), var(--color-obsidian));
+  --background-color: #fff;
   --light-color: var(--color-shaded);
   --dark-color: var(--color-gray-500);
   --text-color: var(--color-text);
@@ -186,8 +188,8 @@
 @media (width >= 600px) {
   :root,
   :host {
-    --heading-font-size-xxl: 44px;
-    --heading-font-size-xl: 36px;
+    --heading-font-size-xxl: 40px;
+    --heading-font-size-xl: 30px;
     --content-padding-inline: var(--space-l);
     --main-block-space: var(--space-xl);
     --section-block-space: var(--space-xl);
@@ -200,10 +202,10 @@
     --body-font-size-m: 18px;
     --body-font-size-s: 16px;
     --body-font-size-xs: 14px;
-    --heading-font-size-xxl: 64px;
-    --heading-font-size-xl: 48px;
-    --heading-font-size-l: 32px;
-    --heading-font-size-m: 24px;
+    --heading-font-size-xxl: 44px;
+    --heading-font-size-xl: 32px;
+    --heading-font-size-l: 26px;
+    --heading-font-size-m: 22px;
     --heading-font-size-s: 20px;
     --heading-font-size-xs: 18px;
     --content-padding-inline: var(--space-xl);
@@ -735,3 +737,265 @@ main > .section.warm {
 .library-metadata-wrapper {
   display: none;
 }
+
+/* ==========================================================================
+   USAA brand overrides — buttons, links, and section background variants.
+   Placed last so they win over the boilerplate "heritage" theme rules above.
+   ========================================================================== */
+
+/* stylelint-disable no-descending-specificity */
+
+/* USAA CTA buttons: solid navy-blue, rounded, no uppercase/gradient shimmer */
+main a.button:any-link,
+main button.button {
+  border: 1px solid var(--usaa-blue);
+  border-radius: 24px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  background-color: var(--usaa-blue);
+  background-image: none;
+  color: #fff;
+  white-space: normal;
+}
+
+main a.button:any-link::after,
+main button.button::after {
+  content: none;
+}
+
+main a.button:any-link:hover,
+main a.button:any-link:focus-visible,
+main button.button:hover,
+main button.button:focus-visible {
+  background-color: var(--usaa-blue-hover);
+  border-color: var(--usaa-blue-hover);
+  box-shadow: none;
+  transform: none;
+}
+
+/* Secondary variant: outlined navy on transparent */
+main a.button.secondary:any-link,
+main button.button.secondary {
+  background-color: transparent;
+  color: var(--usaa-blue);
+  border-color: var(--usaa-blue);
+}
+
+main a.button.secondary:any-link:hover,
+main button.button.secondary:hover {
+  background-color: var(--usaa-grey-bg);
+  color: var(--usaa-blue-hover);
+}
+
+/* Section background variants used by the home page section-metadata blocks */
+
+/* Accent promo strip: centered row that blends into the page canvas
+   (transparent background, no band edge) — a star, the tagline, a GOLD
+   button CTA, then a star. */
+main > .section.accent {
+  background-color: transparent;
+  padding: var(--space-m) 0;
+}
+
+main > .section.accent .default-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-m);
+  text-align: center;
+}
+
+main > .section.accent .default-content-wrapper p {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  color: var(--usaa-navy-deep);
+}
+
+/* Star emblems: keep natural (square) ratio — override the global 16:9 image
+   crop so the star isn't clipped. */
+main > .section.accent .default-content-wrapper p img {
+  width: 24px;
+  height: 24px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* CTA rendered as a gold button */
+main > .section.accent .default-content-wrapper a:any-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #b6a04f;
+  border-radius: 4px;
+  background-color: #d8c47f;
+  color: var(--usaa-navy-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > .section.accent .default-content-wrapper a:any-link:hover {
+  background-color: #cbb56a;
+  border-color: #9c884180;
+}
+
+main > .section.highlight {
+  background-color: var(--section-highlight-bg);
+  padding: var(--space-2xl) 0;
+}
+
+main > .section.dark {
+  background-color: var(--section-dark-bg);
+  padding: var(--space-2xl) 0;
+}
+
+main > .section.dark,
+main > .section.dark * {
+  color: #fff;
+}
+
+main > .section.dark a:not(.button) {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Home-page default-content callout layouts (Medicare, Century, Who-can-join)
+   Targeted by their stable heading ids.
+   -------------------------------------------------------------------------- */
+
+/* Medicare callout: text + CTA on the left, image on the right.
+   DOM order is [image, h2, copy, cta]; on desktop the image is placed into
+   the right column spanning all rows so the text/CTA stack on the left. */
+main > .section:has(> div > h2#have-medicare-get-ready-to-shop-for-2027-plans) > .default-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-s);
+  align-items: center;
+}
+
+main > .section:has(> div > h2#have-medicare-get-ready-to-shop-for-2027-plans) > .default-content-wrapper > p:first-child img {
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin-inline: auto;
+  display: block;
+}
+
+/* "Taking care of the military" (highlight band): two columns — heading on the
+   left, body copy + CTAs on the right. */
+main > .section.highlight > .default-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-m) var(--space-2xl);
+  align-items: start;
+}
+
+main > .section.highlight > .default-content-wrapper > h2 {
+  margin: 0;
+}
+
+main > .section.highlight > .default-content-wrapper > p {
+  margin: 0 0 var(--space-m);
+}
+
+/* The last paragraph holds both CTAs: gold button + tertiary text link */
+main > .section.highlight > .default-content-wrapper > p:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-m);
+  margin: var(--space-s) 0 0;
+}
+
+main > .section.highlight > .default-content-wrapper > p:last-child a:first-child {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid #b6a04f;
+  border-radius: 4px;
+  background: var(--usaa-gold, #d8c47f);
+  color: var(--usaa-navy-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > .section.highlight > .default-content-wrapper > p:last-child a:first-child:hover {
+  background: #cbb56a;
+}
+
+main > .section.highlight > .default-content-wrapper > p:last-child a:last-child {
+  color: var(--usaa-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  main > .section.highlight > .default-content-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* heading spans the left column across all rows; body + CTAs stack on the right */
+  main > .section.highlight > .default-content-wrapper > h2 {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+
+  main > .section.highlight > .default-content-wrapper > :not(h2) {
+    grid-column: 2;
+  }
+}
+
+/* "Who can join USAA": white background (lets the grey highlight band above it
+   stand out) + roomier padding */
+main > .section:has(.columns-spotlight) {
+  background-color: #fff;
+  padding: var(--space-2xl) 0;
+}
+
+@media (width >= 900px) {
+  main > .section:has(> div > h2#have-medicare-get-ready-to-shop-for-2027-plans) > .default-content-wrapper {
+    grid-template-columns: 1fr 260px;
+    column-gap: var(--space-2xl);
+    justify-items: start;
+  }
+
+  /* image → right column, spanning all text rows */
+  main > .section:has(> div > h2#have-medicare-get-ready-to-shop-for-2027-plans) > .default-content-wrapper > p:first-child {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    place-self: center;
+  }
+}
+
+/* Warm grey (#f5f5f0) bands: "Protection for wherever life takes you" and the
+   awards row (Time → Forbes) sit on a light band to separate them from the
+   white sections around them. */
+main > .section:has(> div > h2#protection-for-wherever-life-takes-you),
+main > .section.cards-award-container {
+  background-color: #f5f5f0;
+  padding: var(--space-2xl) 0;
+}
+
+/* Mobile-app promo ("Make life easier…") — USAA renders this on a light cream
+   band with navy text (not a dark band), so override the section-metadata
+   `dark` styling for the columns-app section back to light. */
+main > .section.dark.columns-app-container {
+  background-color: var(--usaa-cream, #f4f1e9);
+  padding: var(--space-3xl) 0;
+}
+
+main > .section.dark.columns-app-container,
+main > .section.dark.columns-app-container * {
+  color: var(--usaa-navy-deep);
+}
+
+main > .section.dark.columns-app-container .columns-app-text h2 {
+  color: var(--usaa-navy);
+}
+/* stylelint-enable no-descending-specificity */

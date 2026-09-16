@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "product-navigation",
+    "imagePattern": "icon",
+    "structure": "icon + heading + cta"
+  },
+  "contentPattern": "Three product tiles, each with an icon, a heading and a call-to-action link.",
+  "usage": "Banner product cards below the main hero on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-product"]
+}

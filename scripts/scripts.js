@@ -167,12 +167,42 @@ async function inlineColorIcons(scope) {
   });
 }
 
+/**
+ * Apply `section-metadata` blocks to their parent sections: read each
+ * `div.section-metadata`, add its `style` values as section classes (and other
+ * keys as data attributes), then remove it so it is not decorated as a block.
+ * This fork's aem.js `decorateSections` does not do this on initial load, so we
+ * handle it here after sections are created and before blocks are decorated.
+ * @param {Element} main
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll('div.section-metadata').forEach((sectionMeta) => {
+    const section = sectionMeta.closest('.section');
+    if (!section) return;
+    const meta = readBlockConfig(sectionMeta);
+    Object.keys(meta).forEach((key) => {
+      if (key === 'style') {
+        meta.style.split(',').map((s) => toClassName(s.trim())).filter(Boolean)
+          .forEach((s) => section.classList.add(s));
+      } else {
+        section.dataset[toCamelCase(key)] = meta[key];
+      }
+    });
+    // Remove the metadata wrapper (and its now-empty parent wrapper) so it is
+    // neither rendered as content nor loaded as a block.
+    const wrapper = sectionMeta.parentElement;
+    sectionMeta.remove();
+    if (wrapper && wrapper !== section && !wrapper.children.length) wrapper.remove();
+  });
+}
+
 export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   inlineColorIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   if (document.contains(main)) initPageSchemas();
 }

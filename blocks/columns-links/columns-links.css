@@ -1,0 +1,117 @@
+/*
+ * columns-links — USAA "Other products and services we offer" wayfinding directory.
+ * Values extracted from source computed styles (usaa.com .usaa-aem-wayfinding-block).
+ * Layout: category columns that wrap 1-per-row (mobile) -> 2 (tablet) -> 3 (desktop),
+ * matching the source RDS grid (sm-6 / lg-4).
+ */
+
+.columns-links > div {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  /* source: 32px row gap (column margin-top), 24px column gutter (0 12px padding each side) */
+  gap: var(--space-xl) var(--space-l);
+}
+
+.columns-links .columns-links-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* category heading — source h3: 24px / 700 / #0b2237, 28px line-height, 16px bottom gap */
+.columns-links .columns-links-col h3 {
+  margin: 0 0 var(--space-m);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--usaa-navy-deep);
+  letter-spacing: normal;
+}
+
+/* link list — source ul: 16px top margin, no list style */
+.columns-links .columns-links-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* source li: 8px vertical margin, 24px line-height */
+.columns-links .columns-links-col li {
+  margin: var(--space-s) 0;
+  padding: 0;
+  line-height: 24px;
+}
+
+/* source text link: navy-blue, 16px / 400, underlined */
+.columns-links .columns-links-col li a:any-link {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--usaa-blue);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentcolor;
+}
+
+.columns-links .columns-links-col li a:hover {
+  color: var(--usaa-blue-hover);
+  text-decoration-color: currentcolor;
+}
+
+/*
+ * "View all …" link. EDS auto-decorates the standalone <p><a> into
+ * p.button-container > a.button. Reset the pill styling back to the source's
+ * tertiary text link: navy-blue, 16px / 500, no background, chevron affordance.
+ */
+.columns-links .columns-links-col p.button-container {
+  margin: var(--space-xl) 0 0;
+}
+
+main .columns-links .columns-links-col a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--usaa-blue);
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+  white-space: normal;
+}
+
+main .columns-links .columns-links-col a.button:any-link::after {
+  content: '\203A'; /* › chevron, matches source utility icon */
+  font-size: 1.25em;
+  line-height: 1;
+  color: inherit;
+}
+
+main .columns-links .columns-links-col a.button:any-link:hover {
+  background: none;
+  color: var(--usaa-blue-hover);
+  text-decoration: underline;
+  text-decoration-color: currentcolor;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (width >= 600px) {
+  .columns-links > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .columns-links > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

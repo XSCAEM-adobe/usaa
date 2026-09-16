@@ -4,7 +4,7 @@
  * Sections: ul > li; add #mega to link for full-width dropdown
  */
 
-import { getMetadata } from '../../scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { getBlockContext } from '../../scripts/shared.js';
 import {
@@ -16,11 +16,6 @@ import {
 
 const DESKTOP = window.matchMedia('(min-width: 900px)');
 const THEME_KEY = 'demo-theme';
-
-function getNavPath() {
-  const meta = getMetadata('nav');
-  return (meta ? new URL(meta, location).pathname : null) || '/nav';
-}
 
 function collapseAll(nav) {
   nav.querySelectorAll('.nav-drop').forEach((li) => li.setAttribute('aria-expanded', 'false'));
@@ -212,46 +207,6 @@ function initTheme(tools) {
   updateLabel();
 }
 
-function initSearch(tools) {
-  const link = tools.querySelector('a[href*="search"]');
-  if (!link) return;
-
-  const path = link.getAttribute('href') || '/search';
-  const q = new URLSearchParams(location.search).get('q') || '';
-  const icon = link.querySelector('.icon-search');
-
-  const form = document.createElement('form');
-  form.className = 'nav-search-form';
-  form.setAttribute('role', 'search');
-  form.action = path;
-  form.method = 'get';
-
-  const input = document.createElement('input');
-  input.type = 'search';
-  input.name = 'q';
-  input.placeholder = 'Search';
-  input.value = q;
-  input.setAttribute('aria-label', 'Search');
-  input.className = 'nav-search-input';
-  input.autocomplete = 'off';
-
-  const submit = document.createElement('button');
-  submit.type = 'submit';
-  submit.className = 'nav-tool nav-search-submit';
-  submit.setAttribute('aria-label', 'Search');
-  if (icon) submit.append(icon.cloneNode(true));
-
-  form.onsubmit = (e) => {
-    if (!input.value.trim()) {
-      e.preventDefault();
-      location.href = path;
-    }
-  };
-  form.append(input, submit);
-  const wrap = link.closest('p');
-  (wrap && wrap.children.length === 1 ? wrap : link).replaceWith(form);
-}
-
 function findLangMenu(tools, globe) {
   let node = globe;
   while (node && node !== tools) {
@@ -330,7 +285,7 @@ async function initAuth(nav, tools) {
   const loginLabel = getDefaultAuthLabel('login');
   const logoutLabel = getDefaultAuthLabel('logout');
 
-  const loginCandidate = tools.querySelector('a[href*="login" i], a[data-auth-link]');
+  const loginCandidate = tools.querySelector('a[href*="login" i], a[href*="logon" i], a[data-auth-link]');
   const shouldCreateLink = !loginCandidate;
 
   const desktopLink = loginCandidate || document.createElement('a');
@@ -518,9 +473,12 @@ const NAV_ITEMS = '.default-content-wrapper > ul > li';
 export default async function decorate(block) {
   const { body, eventRoot } = getBlockContext(block);
 
-  // Load nav content (skip if aem-embed already provided content)
+  // Load nav content (skip if aem-embed already provided content).
+  // Metadata-independent dual-fetch: /content/nav (localhost / aem up) then
+  // /nav (DA/EDS production, fragment served at site root). Do not derive the
+  // path from getMetadata('nav') — that breaks the production fallback.
   if (block.textContent === '') {
-    const fragment = await loadFragment(getNavPath());
+    const fragment = await loadFragment('/content/nav') || await loadFragment('/nav');
     if (!fragment) return;
 
     block.textContent = '';
@@ -538,6 +496,7 @@ export default async function decorate(block) {
   if (!nav.id) nav.id = 'nav';
   if (!nav.getAttribute('aria-label')) nav.setAttribute('aria-label', 'Main');
   if (!nav.getAttribute('aria-expanded')) nav.setAttribute('aria-expanded', 'false');
+  nav.classList.add('usaa-nav');
 
   ['brand', 'sections', 'tools'].forEach((c, i) => nav.children[i]?.classList.add(`nav-${c}`));
 
@@ -551,6 +510,25 @@ export default async function decorate(block) {
 
   nav.querySelector('.nav-brand .button')?.classList.remove('button');
   nav.querySelector('.nav-brand .button-container')?.classList.remove('button-container');
+
+  // Prepend icon spans to the Search and Chat tool links (icons live in /icons,
+  // rendered via the standard EDS icon convention; kept out of the fragment
+  // because plain.html cannot carry class attributes).
+  if (tools) {
+    const iconFor = (href) => {
+      if (/search/i.test(href)) return 'search';
+      if (/contact|chat/i.test(href)) return 'chat';
+      return null;
+    };
+    tools.querySelectorAll('a[href]').forEach((a) => {
+      const name = iconFor(a.getAttribute('href') || '');
+      if (!name || a.querySelector('.icon')) return;
+      const span = document.createElement('span');
+      span.className = `icon icon-${name}`;
+      a.prepend(span);
+    });
+    decorateIcons(tools);
+  }
 
   const sections = nav.querySelector('.nav-sections');
   sections?.querySelectorAll(NAV_ITEMS).forEach((li) => {
@@ -602,7 +580,8 @@ export default async function decorate(block) {
 
   if (tools) {
     initTheme(tools);
-    initSearch(tools);
+    // Search renders as a simple icon+label link (matching the USAA header),
+    // so the inline search-form transform is intentionally not applied here.
     refreshAuthState = await initAuth(nav, tools);
     window.addEventListener('pageshow', () => { refreshAuthState?.(); });
     if (eventRoot === document) {

@@ -9,14 +9,18 @@
   ========================================================================== */
 
 @media (prefers-reduced-motion: no-preference) {
-  :is(main, article.article-body) > .section.will-reveal:not(.revealed) {
+  /* Fade the section's CONTENT wrappers, not the section itself, so a section's
+     own background colour (e.g. the dark navy bands) stays painted while the
+     content animates in — otherwise the transparent section reveals the page
+     canvas behind it and a navy band looks grey until fully revealed. */
+  :is(main, article.article-body) > .section.will-reveal:not(.revealed) > div {
     opacity: 0;
     transform: translateY(32px);
     transition: opacity 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
       transform 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
   }
 
-  :is(main, article.article-body) > .section.will-reveal.revealed {
+  :is(main, article.article-body) > .section.will-reveal.revealed > div {
     opacity: 1;
     transform: none;
     transition: opacity 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),

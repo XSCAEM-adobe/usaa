@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-feature",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "feature-list",
+    "imagePattern": "icon",
+    "structure": "icon + heading + text"
+  },
+  "contentPattern": "Grid of three feature cards, each with an icon, a heading and a short descriptive paragraph.",
+  "usage": "Membership benefits grid on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-feature"]
+}

@@ -1,0 +1,16 @@
+{
+  "variantName": "columns-spotlight",
+  "baseBlock": "columns",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "spotlight",
+    "imagePattern": "side-image",
+    "structure": "text-column + image-column"
+  },
+  "contentPattern": "Two-column spotlight: text (heading, copy, optional list, link) on one side and a photo on the other.",
+  "usage": "\"Who can join USAA\" spotlight on the home page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["columns-spotlight"]
+}
