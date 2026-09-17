@@ -1071,8 +1071,11 @@ main > .section:has(> div > h2#have-medicare-get-ready-to-shop-for-2027-plans) >
 /* Robust fallback: cap the Medicare illustration regardless of section nesting
    (DA's Layout view wraps the DOM differently than the delivered page, so the
    strict `> div > h2#id > … > p:first-child` chain above can miss and the SVG
-   blows up to full width). Descendant combinators match either way. */
-main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) picture,
+   blows up to full width). Descendant combinators match either way.
+   Scoped to `picture:has(img)` so it never catches the EMPTY <picture> left in
+   the CTA link (a stripped arrow icon) — that empty picture was being sized to
+   200×200 and inflating the "Learn more" button to ~226px tall. */
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) picture:has(img),
 main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) picture img,
 main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) > div > p:first-child img {
   width: 200px;
@@ -1082,6 +1085,47 @@ main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) > div > p:f
   object-fit: contain;
   margin-inline: auto;
   display: block;
+}
+
+/* Medicare CTA: on live USAA this is a plain text link with a chevron, not a
+   solid button. EDS auto-promotes the lone link to a.button, so reset it to a
+   navy text link + "›" affordance matching the page's other default-content
+   CTAs ("Get a quote ›", "Read article ›"), and hide the leftover empty
+   <picture> (stripped arrow icon) that otherwise renders as a large block. */
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) a.button:any-link picture:empty {
+  display: none;
+}
+
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) a.button:any-link {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--usaa-blue, var(--link-color));
+  font-size: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) a.button:any-link::after {
+  content: ' \203A';
+  position: static;
+  inset: auto;
+  background: none;
+  transform: none;
+}
+
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) a.button:any-link:hover {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+  color: var(--usaa-navy-deep, var(--link-hover-color));
+  text-decoration: underline;
 }
 
 /* "Taking care of the military" (highlight band): two columns — heading on the
