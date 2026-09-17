@@ -1,0 +1,74 @@
+/* FAQ Expand block — accordion of Q&A with an "Expand all" toggle. */
+
+.faq-expand .faq-expand-toggle-all {
+  display: inline-block;
+  margin: 0 0 16px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--usaa-blue);
+}
+
+.faq-expand .faq-expand-toggle-all:hover {
+  color: var(--usaa-blue-hover);
+}
+
+.faq-expand .faq-expand-item {
+  border-top: 1px solid #d9dde2;
+}
+
+.faq-expand .faq-expand-item:last-child {
+  border-bottom: 1px solid #d9dde2;
+}
+
+.faq-expand .faq-expand-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  color: var(--usaa-navy);
+}
+
+.faq-expand .faq-expand-question::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.5em;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--usaa-blue);
+}
+
+.faq-expand .faq-expand-question[aria-expanded="true"]::after {
+  content: "\2212"; /* minus */
+}
+
+.faq-expand .faq-expand-answer {
+  padding: 0 0 20px;
+}
+
+.faq-expand .faq-expand-answer > * {
+  margin: 0 0 12px;
+}
+
+.faq-expand .faq-expand-answer :is(p, li) {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+.faq-expand .faq-expand-answer a:any-link {
+  color: var(--usaa-blue);
+  text-decoration: underline;
+}

@@ -17,10 +17,28 @@ export default function parse(element, { document }) {
     .find((col) => col !== imageColumn && col.textContent.trim().length > 0);
 
   // Pick a single responsive image (prefer 16x9) to avoid duplicate variants.
+  // USAA lazy-loads these via `data-src-lazy`, so the real URL is not in `src`
+  // (which is a data: placeholder). Resolve the lazy URL into a real <img> so
+  // the image column is never emitted empty.
   let image = null;
-  if (imageColumn) {
-    image = imageColumn.querySelector('.aem-feature-spotlight__image-16x9')
-      || imageColumn.querySelector('img:not([src^="data:"])');
+  const pickImg = (root) => root && (
+    root.querySelector('.aem-feature-spotlight__image-16x9')
+    || root.querySelector('img:not([src^="data:"])')
+    || root.querySelector('img[data-src-lazy]')
+    || root.querySelector('img')
+  );
+  const rawImg = pickImg(imageColumn) || pickImg(spotlight) || pickImg(element);
+  if (rawImg) {
+    const lazy = rawImg.getAttribute('data-src-lazy') || rawImg.getAttribute('data-src');
+    const src = rawImg.getAttribute('src') || '';
+    if (lazy && (!src || src.startsWith('data:'))) {
+      const resolved = document.createElement('img');
+      resolved.setAttribute('src', lazy);
+      resolved.setAttribute('alt', rawImg.getAttribute('alt') || '');
+      image = resolved;
+    } else {
+      image = rawImg;
+    }
   }
 
   // Build the text cell: heading, paragraphs, lists, and CTA links (icons stripped).

@@ -17,20 +17,21 @@
 .cards-feature li {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 0 12px;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
 }
 
 .cards-feature .cards-feature-icon {
-  flex: 0 0 72px;
+  flex: 0 0 64px;
 }
 
 .cards-feature .cards-feature-icon picture,
 .cards-feature .cards-feature-icon img {
   display: block;
-  width: 72px;
-  height: auto;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }
 
 .cards-feature .cards-feature-body {
@@ -43,11 +44,17 @@
 }
 
 .cards-feature h3 {
-  font-size: var(--heading-font-size-l); /* 24px */
+  font-size: var(--heading-font-size-m); /* 22px */
   font-weight: 700;
-  line-height: 28px;
+  line-height: 1.25;
   color: var(--usaa-navy);
-  margin: 0 0 16px;
+  margin: 0;
+}
+
+/* Keep the "see note" reference small so it doesn't dominate the heading. */
+.cards-feature h3 sup {
+  font-size: 0.6em;
+  font-weight: 400;
 }
 
 .cards-feature .cards-feature-body p {
@@ -75,6 +82,7 @@
 
 @media (width >= 900px) {
   .cards-feature ul {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 48px;
   }
 }

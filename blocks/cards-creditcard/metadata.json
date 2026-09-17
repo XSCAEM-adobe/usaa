@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-creditcard",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "product-tile",
+    "imagePattern": "card-art",
+    "structure": "card-art + heading + CTAs + info-columns + disclosure"
+  },
+  "contentPattern": "A credit-card product tile: card art image, product heading, multiple CTAs (Apply now / Card details / Join USAA), three info columns (Special Offer, Benefits and Features, Rates and Fees), and a trailing disclosure.",
+  "usage": "Credit-card product tiles across the credit cards page (low-rate, cash-back, reward-points, build-credit sections).",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-creditcard"]
+}

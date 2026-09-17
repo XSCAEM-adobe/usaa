@@ -243,8 +243,232 @@
       ],
       "representativeUrl": "https://www.usaa.com/banking/checking?wa_ref=pub_home_banner_bank_checking",
       "description": "To be named in naming step",
-      "blocks": [],
-      "urlPattern": "/banking/*"
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(1)"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.feature-collection-authored-content.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(3)",
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.feature-collection-authored-content.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(5)"
+          ]
+        },
+        {
+          "name": "columns-spotlight",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(1)",
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(6)",
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(2)"
+          ]
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(4)"
+          ]
+        },
+        {
+          "name": "table-rate",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-data-table.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "faq-expand",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-faq-block.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.article-teaser.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        },
+        {
+          "name": "hero-callout",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(9)"
+          ]
+        },
+        {
+          "name": "columns-links",
+          "instances": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-wayfinding-block.aem-GridColumn.aem-GridColumn--default--12"
+          ]
+        }
+      ],
+      "urlPattern": "/banking/*",
+      "sections": [
+        {
+          "id": "1",
+          "name": "fdic-disclosure-strip",
+          "selector": [
+            "#body-wrapper--main > p.bk-fdic-banner"
+          ],
+          "style": "accent",
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "hero",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(1)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "value-features",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.feature-collection-authored-content.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(3)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "youth-spotlight",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(1)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns-spotlight"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "5",
+          "name": "how-it-works-steps",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(4)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-steps"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "everyday-features",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.feature-collection-authored-content.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(5)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "7",
+          "name": "military-billboard",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(6)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-spotlight"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "8",
+          "name": "recruits-spotlight",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-spotlight.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-spotlight"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "9",
+          "name": "rate-table",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-data-table.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": null,
+          "blocks": [
+            "table-rate"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "10",
+          "name": "rate-legal-disclosure",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.legal-block.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "11",
+          "name": "faq",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-faq-block.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": "grey",
+          "blocks": [
+            "faq-expand"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "12",
+          "name": "related-articles",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.article-teaser.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-article"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "13",
+          "name": "closing-cta-banner",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.profiled-content-container.aem-GridColumn.aem-GridColumn--default--12:nth-of-type(9)"
+          ],
+          "style": "dark",
+          "blocks": [
+            "hero-callout"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "14",
+          "name": "related-banking-needs",
+          "selector": [
+            "#body-wrapper--main > div.root.responsivegrid > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid.aem-Grid--12.aem-Grid--default--12 > section.usaa-aem-wayfinding-block.aem-GridColumn.aem-GridColumn--default--12"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns-links"
+          ],
+          "defaultContent": []
+        }
+      ]
     },
     {
       "name": "banking-2",
@@ -252,9 +476,196 @@
         "https://www.usaa.com/banking/credit-cards-public?wa_ref=pub_home_banner_bank_credit_card"
       ],
       "representativeUrl": "https://www.usaa.com/banking/credit-cards-public?wa_ref=pub_home_banner_bank_credit_card",
-      "description": "To be named in naming step",
-      "blocks": [],
-      "urlPattern": "/banking/*"
+      "description": "USAA credit cards product page",
+      "blocks": [
+        {
+          "name": "cc-hero",
+          "instances": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-globals__background-inverse.banner-class"
+          ]
+        },
+        {
+          "name": "card-filter",
+          "instances": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(2)"
+          ]
+        },
+        {
+          "name": "cards-creditcard",
+          "instances": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(4)",
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(6)",
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(8)",
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(10)"
+          ]
+        },
+        {
+          "name": "cards-feature",
+          "instances": [
+            ".pd-gtb-background",
+            ".rds-layout--top-1.rds-layout--bottom-6"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            ".articles-list-container",
+            ".faq-container",
+            ".rds-layout__container:nth-of-type(12)"
+          ]
+        },
+        {
+          "name": "faq-expand",
+          "instances": [
+            ".articles-list-container",
+            ".faq-container",
+            ".rds-layout__container:nth-of-type(12)"
+          ]
+        }
+      ],
+      "urlPattern": "/banking/*",
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-globals__background-inverse.banner-class"
+          ],
+          "style": null,
+          "blocks": [
+            "cc-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "filter-bar",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "card-filter"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "lowrate-header",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.section-header-container:nth-of-type(3)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "lowrate-products",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(4)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-creditcard"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "5",
+          "name": "cashback-header",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.section-header-container:nth-of-type(5)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "cashback-products",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(6)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-creditcard"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "7",
+          "name": "rewardpoints-header",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.section-header-container:nth-of-type(7)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "8",
+          "name": "rewardpoints-products",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(8)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-creditcard"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "9",
+          "name": "buildcredit-header",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.section-header-container:nth-of-type(9)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": []
+        },
+        {
+          "id": "10",
+          "name": "buildcredit-products",
+          "selector": [
+            "#usaa-templateContent > div > div.storefront-cc-main > div.sf-cc-main > div.rds-layout__container:nth-of-type(10)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-creditcard"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "11",
+          "name": "explore-benefits",
+          "selector": [
+            ".pd-gtb-background",
+            ".rds-layout--top-1.rds-layout--bottom-6"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "12",
+          "name": "articles-faq-wallet",
+          "selector": [
+            ".articles-list-container",
+            ".faq-container",
+            ".rds-layout__container:nth-of-type(12)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-article",
+            "faq-expand"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ],
   "metadata": {

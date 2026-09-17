@@ -1,0 +1,39 @@
+/* Card Filter block — a row of pill "chips" that filter the credit-card grids. */
+
+.card-filter {
+  margin: 24px 0 8px;
+}
+
+.card-filter .card-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.card-filter .card-filter-chip {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid var(--usaa-blue);
+  border-radius: 24px;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--usaa-blue);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.card-filter .card-filter-chip:hover,
+.card-filter .card-filter-chip:focus-visible {
+  background-color: var(--usaa-grey-bg);
+  outline: none;
+}
+
+.card-filter .card-filter-chip.is-active {
+  background-color: var(--usaa-navy);
+  border-color: var(--usaa-navy);
+  color: #fff;
+  font-weight: 700;
+}

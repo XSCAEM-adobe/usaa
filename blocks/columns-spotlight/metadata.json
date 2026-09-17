@@ -9,8 +9,17 @@
     "structure": "text-column + image-column"
   },
   "contentPattern": "Two-column spotlight: text (heading, copy, optional list, link) on one side and a photo on the other.",
-  "usage": "\"Who can join USAA\" spotlight on the home page.",
+  "usage": {
+    "description": "\"Who can join USAA\" spotlight on the home page.",
+    "pagesUsing": [
+      "/banking/checking"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-16T20:44:01.801Z"
+  },
   "canonicalModel": "standalone",
   "options": [],
-  "memberVariantIds": ["columns-spotlight"]
+  "memberVariantIds": [
+    "columns-spotlight"
+  ]
 }

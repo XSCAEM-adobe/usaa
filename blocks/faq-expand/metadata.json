@@ -1,0 +1,18 @@
+{
+  "variantName": "faq-expand",
+  "baseBlock": "faq",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "faq-accordion",
+    "imagePattern": "none",
+    "structure": "expand-all + question/answer accordion"
+  },
+  "contentPattern": "An accordion of authored Q&A pairs (question cell + answer cell) with an Expand all / Collapse all toggle.",
+  "usage": "Checking FAQ accordion on the checking page; also reused for the Credit Card FAQ on /banking/credit-cards-public.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "faq-expand"
+  ]
+}

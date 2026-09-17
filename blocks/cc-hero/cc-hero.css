@@ -1,0 +1,168 @@
+/* CC Hero block — full-bleed lifestyle photo with overlaid promo copy. */
+
+.cc-hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.cc-hero .cc-hero-bg {
+  grid-area: 1 / 1;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.cc-hero .cc-hero-bg picture,
+.cc-hero .cc-hero-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navy scrim so the light promo copy stays legible over the photo. Strongest
+   on the left (behind the text); clears quickly so the couple stays bright,
+   matching the source hero. */
+.cc-hero .cc-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(0 48 101 / 82%) 0%,
+    rgb(0 48 101 / 55%) 30%,
+    rgb(0 48 101 / 0%) 60%
+  );
+}
+
+/* Gold divider stripe along the bottom edge of the hero (USAA brand accent). */
+.cc-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 6px;
+  background-color: var(--usaa-gold);
+  z-index: 2;
+}
+
+.cc-hero .cc-hero-content {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 24px;
+  max-width: 640px;
+  color: #fff;
+}
+
+.cc-hero.no-image {
+  background-color: var(--usaa-navy);
+}
+
+.cc-hero.no-image .cc-hero-content {
+  grid-area: auto;
+}
+
+.cc-hero .cc-hero-content > * {
+  margin: 0;
+  color: #fff;
+}
+
+/* Eyebrow (small gold kicker above the headline). */
+.cc-hero .cc-hero-content h1 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--usaa-gold);
+}
+
+/* Headline. */
+.cc-hero .cc-hero-content h2 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.cc-hero .cc-hero-content p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.4;
+  max-width: 34em;
+}
+
+.cc-hero .cc-hero-content sup {
+  font-size: 0.6em;
+  font-weight: 400;
+}
+
+/* Breathing room around the CTAs. The content sits in a block-level inner
+   wrapper (no flex gap reaches it), so space the "Apply now" button and the
+   following "Not a member?" link explicitly. */
+.cc-hero .cc-hero-content .button-container {
+  margin: 8px 0 0;
+}
+
+.cc-hero .cc-hero-content .button-container + p {
+  margin-top: 20px;
+}
+
+/* Plain (non-button) links — e.g. "Not a member? Join USAA" — stay light and
+   underlined so they read against the photo. */
+.cc-hero .cc-hero-content a:not(.button):any-link {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cc-hero .cc-hero-content a:not(.button):any-link:hover {
+  color: var(--usaa-gold);
+}
+
+/* Primary CTA: white button with blue text, matching the source hero. */
+.cc-hero .cc-hero-content a.button:any-link {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--usaa-blue);
+}
+
+.cc-hero .cc-hero-content a.button:any-link:hover,
+.cc-hero .cc-hero-content a.button:any-link:focus-visible {
+  background-color: #f0f0eb;
+  border-color: #f0f0eb;
+  color: var(--usaa-blue-hover);
+}
+
+.cc-hero .cc-hero-content a.button.secondary:any-link {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+.cc-hero .cc-hero-content a.button.secondary:any-link:hover {
+  background-color: rgb(255 255 255 / 15%);
+  color: #fff;
+}
+
+@media (width >= 600px) {
+  .cc-hero {
+    min-height: 420px;
+  }
+
+  .cc-hero .cc-hero-content {
+    padding: 48px 40px;
+  }
+}
+
+@media (width >= 900px) {
+  .cc-hero {
+    min-height: 460px;
+  }
+
+  .cc-hero .cc-hero-content {
+    padding: 64px;
+  }
+}
