@@ -189,6 +189,14 @@ export class AEMEmbed extends HTMLElement {
         styles.onerror = () => { body.style = ''; };
         this.shadowRoot.appendChild(styles);
 
+        // Outside DA, loadLazy() adds lazy-styles.css; the shadow-DOM embed must
+        // inject it too or ~10KB of section/block styling is missing and the page
+        // renders unstyled only inside da.live's preview.
+        const lazyStyles = document.createElement('link');
+        lazyStyles.setAttribute('rel', 'stylesheet');
+        lazyStyles.setAttribute('href', `${origin}${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+        this.shadowRoot.appendChild(lazyStyles);
+
         let htmlText = await resp.text();
         // Fix relative image urls
         const regex = /\.\/media/g;
