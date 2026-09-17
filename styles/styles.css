@@ -1018,6 +1018,22 @@ main > .section:has(> div > h2#have-medicare-get-ready-to-shop-for-2027-plans) >
   display: block;
 }
 
+/* Robust fallback: cap the Medicare illustration regardless of section nesting
+   (DA's Layout view wraps the DOM differently than the delivered page, so the
+   strict `> div > h2#id > … > p:first-child` chain above can miss and the SVG
+   blows up to full width). Descendant combinators match either way. */
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) picture,
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) picture img,
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) > div > p:first-child img {
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin-inline: auto;
+  display: block;
+}
+
 /* "Taking care of the military" (highlight band): two columns — heading on the
    left, body copy + CTAs on the right. */
 main > .section.highlight > .default-content-wrapper {
@@ -1127,5 +1143,23 @@ main > .section.dark.columns-app-container * {
 
 main > .section.dark.columns-app-container .columns-app-text h2 {
   color: var(--usaa-navy);
+}
+
+/* Safety cap for the mobile-app section's images (phone mockup + app-store
+   badges). Block-scoped CSS (columns-app.css) only applies once the block JS
+   has decorated; in DA's Layout view that may not have run, leaving the images
+   unconstrained and huge. These global rules key off the section container, so
+   they hold even before block decoration. */
+main > .section.columns-app-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+main > .section.columns-app-container [href*="itunes.apple.com"] img,
+main > .section.columns-app-container [href*="play.google.com"] img {
+  height: 48px;
+  width: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 /* stylelint-enable no-descending-specificity */
