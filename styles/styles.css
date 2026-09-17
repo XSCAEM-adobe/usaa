@@ -576,35 +576,51 @@ main img:not([width], [height]) {
   object-fit: cover;
 }
 
-/* Images inside block containers must keep their natural aspect ratio, not the
-   global 16:9 CLS crop above. Block-scoped CSS normally handles this, but that
-   only loads after block decoration (scripts.js). In environments that render
-   the stored document WITHOUT running decoration — notably Document Authoring's
-   Layout preview — the block CSS never applies, so every below-fold image falls
-   back to the 16:9 crop and blows up to full column width. Key these off the
-   section container classes (present in the raw document, no JS needed) so the
-   images stay correctly sized in both the decorated page and DA's Layout view. */
-main [class$="-container"] img,
-main [class*="-container "] img {
+/* stylelint-disable no-descending-specificity */
+
+/* Keep block images at their natural ratio, not the global 16:9 crop above.
+   Block-scoped CSS normally handles this, but it only loads after block
+   decoration (scripts.js). Environments that render the stored document
+   WITHOUT decoration — notably Document Authoring's Layout preview — never get
+   that CSS, so images fall back to the 16:9 crop at full column width and blow
+   up. These rules key off the BLOCK classes (.hero-banner, .cards-*, .columns-*
+   …), which are authored into the raw document and present with or without JS,
+   so they hold in both the decorated page and DA's Layout view. */
+main :is(
+  .hero-banner, .cards-product, .cards-feature, .cards-award, .cards-quicklink,
+  .cards-article, .columns-app, .columns-spotlight, .columns-links, .tabs-perks
+) img {
   aspect-ratio: auto;
   object-fit: contain;
   max-width: 100%;
   height: auto;
 }
 
+/* Medicare callout illustration lives as default content (no block class, and
+   DA strips heading ids so we can't target #have-medicare…). It is the only
+   default-content section that pairs a heading with a standalone image, so
+   match a content div that has BOTH an h2 and a picture and cap that image.
+   (The accent star strip has pictures but no h2, so it's unaffected.) */
+main > div:has(> picture):has(> h2) picture img,
+main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) img {
+  max-width: 220px;
+}
+
 /* Small illustration/icon images (feature + quick-link cards) shouldn't stretch
    to full column width in the undecorated fallback — cap them icon-sized. */
-main .cards-feature-container img,
-main .cards-quicklink-container img {
+main .cards-feature img,
+main .cards-quicklink img {
   max-width: 72px;
 }
 
 /* App-store badges keep a fixed, undistorted height in the fallback too. */
-main .columns-app-container [href*="itunes.apple.com"] img,
-main .columns-app-container [href*="play.google.com"] img {
+main .columns-app [href*="itunes.apple.com"] img,
+main .columns-app [href*="play.google.com"] img {
   max-width: 180px;
   height: 48px;
 }
+
+/* stylelint-enable no-descending-specificity */
 
 /* sections – boilerplate structure with design tokens */
 :is(main, article.article-body) > .section {
