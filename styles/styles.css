@@ -597,13 +597,17 @@ main :is(
 }
 
 /* Medicare callout illustration lives as default content (no block class, and
-   DA strips heading ids so we can't target #have-medicare…). It is the only
-   default-content section that pairs a heading with a standalone image, so
-   match a content div that has BOTH an h2 and a picture and cap that image.
-   (The accent star strip has pictures but no h2, so it's unaffected.) */
-main > div:has(> picture):has(> h2) picture img,
+   DA strips heading ids so we can't target #have-medicare…). It's the only
+   default-content section pairing a heading with a standalone image. The
+   nesting differs between the DA-stored doc (div > picture + div > h2, direct
+   siblings) and the delivered plain.html (div > p > picture + div > h2), so
+   match a content-wrapper div that contains BOTH an h2 and a picture anywhere
+   inside, and cap that picture's image. Excluded: anything inside a known block
+   (handled above) and the accent star strip (no h2). */
+main > div:not(:has([class])):has(h2):has(picture) picture img,
 main .section:has(h2#have-medicare-get-ready-to-shop-for-2027-plans) img {
   max-width: 220px;
+  max-height: 260px;
 }
 
 /* Small illustration/icon images (feature + quick-link cards) shouldn't stretch
@@ -1207,5 +1211,127 @@ main > .section.columns-app-container [href*="play.google.com"] img {
   width: auto;
   aspect-ratio: auto;
   object-fit: contain;
+}
+
+/* ── Undecorated (DA Layout view) fallbacks for section-metadata bands ──
+   The delivery pipeline converts each `<div class="section-metadata">` into a
+   `.section.<style>` class and unwraps content into a `.default-content-wrapper`.
+   Document Authoring's Layout view renders the STORED document without running
+   that decoration, so the raw `> div.section-metadata` wrapper survives and none
+   of the `.section.accent` / `.section.highlight` rules above ever match there —
+   the accent stars fall back to left-aligned stacking and the highlight CTAs
+   render as plain, run-together links. These selectors key off that raw wrapper
+   (which is REMOVED once decoration runs), so they apply ONLY in the undecorated
+   view and never collide with the decorated rules. */
+
+/* Hide the raw metadata block itself (decoration removes it; here it would show
+   as literal "style accent" text). */
+main div.section-metadata {
+  display: none;
+}
+
+/* Accent promo strip (star · tagline + gold CTA · star): the only metadata band
+   with images but no heading. Centered flex row. */
+main > div:has(> div.section-metadata):has(img):not(:has(h2)) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-m);
+  padding: var(--space-m) var(--content-padding-inline);
+  text-align: center;
+}
+
+main > div:has(> div.section-metadata):has(img):not(:has(h2)) p {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  color: var(--usaa-navy-deep);
+}
+
+main > div:has(> div.section-metadata):has(img):not(:has(h2)) :is(picture, img) {
+  flex: 0 0 auto;
+  width: 24px;
+  min-width: 24px;
+  max-width: 24px;
+  height: 24px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  display: inline-block;
+}
+
+main > div:has(> div.section-metadata):has(img):not(:has(h2)) picture img {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 100%;
+}
+
+main > div:has(> div.section-metadata):has(img):not(:has(h2)) a:any-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #b6a04f;
+  border-radius: 4px;
+  background-color: #d8c47f;
+  color: var(--usaa-navy-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > div:has(> div.section-metadata):has(img):not(:has(h2)) a:any-link:hover {
+  background-color: #cbb56a;
+  border-color: #9c884180;
+}
+
+/* Highlight band ("Taking care of the military community"): heading + copy +
+   two CTAs, no image. Give it the light band, constrain width, and split the
+   trailing CTA paragraph into a gold button + tertiary text link. */
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) {
+  background-color: var(--section-highlight-bg, var(--light-color));
+  padding: var(--space-2xl) 0;
+}
+
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > :not(div.section-metadata) {
+  max-width: var(--grid-container-width);
+  margin-inline: auto;
+  padding-inline: var(--content-padding-inline);
+}
+
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > h2 {
+  margin: 0 0 var(--space-m);
+}
+
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > p {
+  margin: 0 auto var(--space-m);
+}
+
+/* The final paragraph holds both CTAs: gold button + tertiary text link. */
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > p:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-m);
+  margin-top: var(--space-s);
+}
+
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > p:last-of-type a:first-child {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid #b6a04f;
+  border-radius: 4px;
+  background: var(--usaa-gold, #d8c47f);
+  color: var(--usaa-navy-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > p:last-of-type a:first-child:hover {
+  background: #cbb56a;
+}
+
+main > div:has(> div.section-metadata):has(h2):not(:has(img)) > p:last-of-type a:last-child {
+  color: var(--usaa-blue);
+  font-weight: 700;
+  text-decoration: none;
 }
 /* stylelint-enable no-descending-specificity */
