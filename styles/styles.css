@@ -576,6 +576,36 @@ main img:not([width], [height]) {
   object-fit: cover;
 }
 
+/* Images inside block containers must keep their natural aspect ratio, not the
+   global 16:9 CLS crop above. Block-scoped CSS normally handles this, but that
+   only loads after block decoration (scripts.js). In environments that render
+   the stored document WITHOUT running decoration — notably Document Authoring's
+   Layout preview — the block CSS never applies, so every below-fold image falls
+   back to the 16:9 crop and blows up to full column width. Key these off the
+   section container classes (present in the raw document, no JS needed) so the
+   images stay correctly sized in both the decorated page and DA's Layout view. */
+main [class$="-container"] img,
+main [class*="-container "] img {
+  aspect-ratio: auto;
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Small illustration/icon images (feature + quick-link cards) shouldn't stretch
+   to full column width in the undecorated fallback — cap them icon-sized. */
+main .cards-feature-container img,
+main .cards-quicklink-container img {
+  max-width: 72px;
+}
+
+/* App-store badges keep a fixed, undistorted height in the fallback too. */
+main .columns-app-container [href*="itunes.apple.com"] img,
+main .columns-app-container [href*="play.google.com"] img {
+  max-width: 180px;
+  height: 48px;
+}
+
 /* sections – boilerplate structure with design tokens */
 :is(main, article.article-body) > .section {
   margin: inherit;
