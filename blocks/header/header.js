@@ -498,6 +498,17 @@ export default async function decorate(block) {
   if (!nav.getAttribute('aria-expanded')) nav.setAttribute('aria-expanded', 'false');
   nav.classList.add('usaa-nav');
 
+  // The nav fragment stores images with relative paths (plain.html cannot carry
+  // absolute /content paths). On nested pages (e.g. /content/banking/checking)
+  // a bare "images/x.svg" would resolve against the page path and 404. Re-root
+  // any relative nav image to the nav fragment's own /content/ location.
+  nav.querySelectorAll('img[src]').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (src && !/^(https?:)?\/\//.test(src) && !src.startsWith('/')) {
+      img.setAttribute('src', new URL(src, `${window.location.origin}/content/`).pathname);
+    }
+  });
+
   ['brand', 'sections', 'tools'].forEach((c, i) => nav.children[i]?.classList.add(`nav-${c}`));
 
   const tools = nav.querySelector('.nav-tools');

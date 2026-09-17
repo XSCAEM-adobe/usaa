@@ -12,10 +12,14 @@
  * content before the block (they are not cards).
  */
 export default function parse(element, { document }) {
-  // Support both card-pack and article-teaser markup.
+  // Support card-pack, article-teaser, and storefront article-column markup.
   let cards = Array.from(element.querySelectorAll('.usaa-aem-card-ac__individualCard, article.rds-card'));
   if (!cards.length) {
     cards = Array.from(element.querySelectorAll('.article-teaser-child, article.aem-article-teaser__teaser'));
+  }
+  if (!cards.length) {
+    // Storefront markup (credit-cards page): .article-column / .article-column-child-container
+    cards = Array.from(element.querySelectorAll('.article-column-child-container, .article-column'));
   }
   // De-duplicate nested matches (keep outermost).
   cards = cards.filter((c) => !cards.some((o) => o !== c && o.contains(c)));
@@ -23,7 +27,7 @@ export default function parse(element, { document }) {
   const cells = [];
 
   cards.forEach((card) => {
-    const image = card.querySelector('.rds-card__image img, .article-teaser-child-image img, img:not([src^="data:"])');
+    const image = card.querySelector('.rds-card__image img, .article-teaser-child-image img, .article-image-container img, img:not([src^="data:"])');
 
     const textCell = [];
     const heading = card.querySelector('.rds-card__body h3, .aem-article-teaser-child-header h3, h3, h4');

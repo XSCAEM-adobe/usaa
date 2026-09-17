@@ -1,0 +1,19 @@
+/* Table Rate block — structural/layout only (no brand tokens) */
+
+.table-rate table {
+  width: 100%;
+  max-width: 640px;
+  border-collapse: collapse;
+}
+
+.table-rate th,
+.table-rate td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid currentcolor;
+  vertical-align: top;
+}
+
+.table-rate thead th {
+  font-weight: 700;
+}

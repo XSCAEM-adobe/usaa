@@ -817,13 +817,28 @@ main > .section.accent .default-content-wrapper p {
 }
 
 /* Star emblems: keep natural (square) ratio — override the global 16:9 image
-   crop so the star isn't clipped. */
-main > .section.accent .default-content-wrapper p img {
+   crop so the star isn't clipped. Scoped to the accent strip only (the FDIC
+   bar is distinguished by its <em>), and matched regardless of whether the
+   image is wrapped in a <picture> or sits bare inside/outside a
+   .default-content-wrapper — da.live and aem.page nest these differently, so a
+   selector tied to `.default-content-wrapper p img` misses in one of them and
+   the full-size (97×92) star blows the row apart. */
+main > .section.accent:not(:has(em)) :is(picture, img) {
+  flex: 0 0 auto;
   width: 24px;
+  min-width: 24px;
+  max-width: 24px;
   height: 24px;
   aspect-ratio: auto;
   object-fit: contain;
-  display: block;
+  display: inline-block;
+}
+
+main > .section.accent:not(:has(em)) picture img {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 100%;
 }
 
 /* CTA rendered as a gold button */
@@ -841,6 +856,46 @@ main > .section.accent .default-content-wrapper a:any-link {
 main > .section.accent .default-content-wrapper a:any-link:hover {
   background-color: #cbb56a;
   border-color: #9c884180;
+}
+
+/* FDIC disclosure bar (banking pages): a thin full-bleed deep-navy band with
+   white text and the inline FDIC logo. Distinguished from the home promo strip
+   by its <em> disclosure text (the promo strip has none). */
+main > .section.accent:has(em) {
+  background-color: var(--usaa-navy-deep);
+  padding: 10px 0;
+}
+
+main > .section.accent:has(em) .default-content-wrapper {
+  justify-content: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+main > .section.accent:has(em) .default-content-wrapper p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: var(--body-font-size-xs, 0.8125rem);
+  font-weight: 400;
+  color: #fff;
+}
+
+main > .section.accent:has(em) .default-content-wrapper p >:first-child {
+  font-weight: 700;
+}
+
+main > .section.accent:has(em) .default-content-wrapper em {
+  font-style: italic;
+}
+
+/* FDIC logo: keep its natural aspect, sized to the text line. */
+main > .section.accent:has(em) .default-content-wrapper p img {
+  width: auto;
+  height: 18px;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 main > .section.highlight {
@@ -861,6 +916,81 @@ main > .section.dark * {
 main > .section.dark a:not(.button) {
   color: #fff;
   text-decoration: underline;
+}
+
+/* Grey band (used by the credit-cards "Explore more benefits" section). */
+main > .section.grey {
+  background-color: #f5f5f0;
+  padding: var(--space-2xl) 0;
+}
+
+/* "Available with:" payment marks (Apple/Google/Samsung Pay) sit as loose
+   default content after the FAQ. They are small logos of differing intrinsic
+   ratios — override the global 16:9 crop and let each keep its own shape at a
+   consistent height, laid out in a tidy row. */
+main > .section .default-content-wrapper p:has(img[alt$="Pay"]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+main > .section .default-content-wrapper p:has(img[alt$="Pay"]) :is(picture, img) {
+  width: auto;
+  max-width: 100%;
+  height: 28px;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumb — path-derived trail at the top of interior pages (built in
+   scripts.js). Full-bleed light band: Home › Banking › Checking.
+   -------------------------------------------------------------------------- */
+main > nav.breadcrumb {
+  margin: 0;
+  padding: 12px var(--content-padding-inline);
+  background-color: #f5f5f0;
+  border-bottom: 1px solid #e3e3dc;
+  font-size: var(--body-font-size-xs, 0.8125rem);
+}
+
+main > nav.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0 auto;
+  padding: 0;
+  max-width: var(--nav-desktop-max-width, 1264px);
+  list-style: none;
+}
+
+main > nav.breadcrumb li {
+  display: flex;
+  align-items: center;
+  color: var(--usaa-navy-deep);
+}
+
+/* chevron separator between crumbs */
+main > nav.breadcrumb li:not(:first-child)::before {
+  content: "›";
+  margin-right: 8px;
+  color: #8a8a80;
+}
+
+main > nav.breadcrumb a:any-link {
+  color: var(--usaa-blue);
+  text-decoration: underline;
+}
+
+main > nav.breadcrumb a:any-link:hover {
+  color: var(--usaa-blue-hover);
+}
+
+main > nav.breadcrumb li[aria-current="page"] {
+  color: var(--usaa-navy-deep);
+  font-weight: 400;
 }
 
 /* --------------------------------------------------------------------------

@@ -1,0 +1,146 @@
+/* Cards Credit Card block — flat product rows (no card box, matching USAA):
+   product heading full-width on top, then a 4-column body — card art + CTAs,
+   Special Offer, Benefits and Features, Rates and Fees. Rows are separated by a
+   hairline rule. */
+
+.cards-creditcard ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.cards-creditcard li {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 0 48px;
+  border-bottom: 1px solid #d9dde2;
+}
+
+.cards-creditcard li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Product heading spans the full width. */
+.cards-creditcard .cards-creditcard-heading > * {
+  margin: 0;
+}
+
+.cards-creditcard .cards-creditcard-heading h2 {
+  font-size: var(--heading-font-size-xl);
+  color: var(--usaa-navy);
+  line-height: 1.2;
+}
+
+/* Body grid: card art column + info columns. */
+.cards-creditcard .cards-creditcard-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Card art + CTAs column. */
+.cards-creditcard .cards-creditcard-art {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.cards-creditcard .cards-creditcard-art picture,
+.cards-creditcard .cards-creditcard-art img {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+
+  /* Card art is ~4:3 (640×504); override the global 16:9 crop so the card
+     title and USAA logo at the top/bottom of the art are not cut off. */
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.cards-creditcard .cards-creditcard-art .button-container {
+  margin: 0;
+  width: 100%;
+  max-width: 260px;
+}
+
+.cards-creditcard .cards-creditcard-art a.button {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+/* "Join USAA" demoted text link. */
+.cards-creditcard .cards-creditcard-art a:not(.button):any-link {
+  font-weight: 700;
+  color: var(--usaa-blue);
+  text-decoration: underline;
+}
+
+.cards-creditcard .cards-creditcard-art a:not(.button):any-link:hover {
+  color: var(--usaa-blue-hover);
+}
+
+/* Info columns: Special Offer / Benefits / Rates. */
+.cards-creditcard .cards-creditcard-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cards-creditcard .cards-creditcard-column > * {
+  margin: 0;
+}
+
+.cards-creditcard .cards-creditcard-column h3 {
+  font-size: var(--heading-font-size-m);
+  color: var(--usaa-navy);
+  line-height: 1.25;
+}
+
+.cards-creditcard .cards-creditcard-column ul {
+  display: block;
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.cards-creditcard .cards-creditcard-column li {
+  display: list-item;
+  padding: 0;
+  margin: 0 0 6px;
+  border: none;
+  font-size: var(--body-font-size-s);
+  line-height: 1.45;
+}
+
+.cards-creditcard .cards-creditcard-column p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+.cards-creditcard .cards-creditcard-column sup {
+  font-size: 0.7em;
+}
+
+.cards-creditcard .cards-creditcard-disclosure {
+  margin: 0;
+  color: #5a6672;
+  font-size: var(--body-font-size-xs, 0.75rem);
+  line-height: 1.5;
+}
+
+@media (width >= 900px) {
+  .cards-creditcard .cards-creditcard-body {
+    grid-template-columns: minmax(240px, 1fr) 1.2fr 1.2fr 1fr;
+    gap: 32px;
+  }
+}

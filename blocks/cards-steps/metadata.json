@@ -1,0 +1,16 @@
+{
+  "variantName": "cards-steps",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "process-steps",
+    "imagePattern": "none",
+    "structure": "numbered-badge + heading + text"
+  },
+  "contentPattern": "A row of numbered process steps, each with a circular number badge, a heading and body text.",
+  "usage": "\"Opening an account is fast and easy\" step sequence on the checking page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cards-steps"]
+}

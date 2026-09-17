@@ -1,0 +1,16 @@
+{
+  "variantName": "table-rate",
+  "baseBlock": "table",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "rate-data",
+    "imagePattern": "none",
+    "structure": "header-row + data-rows"
+  },
+  "contentPattern": "A simple data table with a header row (e.g. Daily ledger balance, APY) and one or more data rows.",
+  "usage": "Current rate/APY table on the checking page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["table-rate"]
+}

@@ -1,0 +1,40 @@
+/* Hero Callout block — structural/layout only (no brand tokens) */
+
+.hero-callout > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 32px 24px;
+}
+
+.hero-callout .hero-callout-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-callout .hero-callout-content > * {
+  margin: 0;
+}
+
+.hero-callout .hero-callout-content .button-container {
+  margin: 0;
+}
+
+.hero-callout .hero-callout-media picture,
+.hero-callout .hero-callout-media img {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-inline: auto;
+}
+
+@media (width >= 900px) {
+  .hero-callout > div {
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    padding: 48px 64px;
+  }
+}

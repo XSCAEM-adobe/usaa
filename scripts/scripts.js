@@ -131,6 +131,62 @@ function buildAutoBlocks(main) {
   }
 }
 
+/**
+ * Build a path-derived breadcrumb trail at the top of interior pages, e.g.
+ * "/content/banking/checking" → Home › Banking › Checking. Skipped on the
+ * home/root page. Segment labels are humanized from the URL; the final segment
+ * is the current page (not a link). Mirrors the USAA site breadcrumb that sits
+ * between the global nav and the page content.
+ * @param {Element} main
+ */
+function buildBreadcrumb(main) {
+  const { pathname } = window.location;
+  // Normalize: drop the CMS "/content" prefix and any trailing "index".
+  const clean = pathname
+    .replace(/\.plain\.html$|\.html$/, '')
+    .replace(/^\/content(?=\/|$)/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/$/, '');
+  const segments = clean.split('/').filter(Boolean);
+  if (!segments.length) return; // root / home — no breadcrumb
+
+  const humanize = (slug) => slug
+    // Drop CMS-only suffixes that aren't part of the human label.
+    .replace(/-(public|member|index)$/i, '')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const nav = document.createElement('nav');
+  nav.className = 'breadcrumb';
+  nav.setAttribute('aria-label', 'Breadcrumb');
+  const ol = document.createElement('ol');
+
+  const makeItem = (label, href) => {
+    const li = document.createElement('li');
+    if (href) {
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      li.append(a);
+    } else {
+      li.setAttribute('aria-current', 'page');
+      li.textContent = label;
+    }
+    return li;
+  };
+
+  ol.append(makeItem('Home', '/'));
+  let acc = '';
+  segments.forEach((seg, i) => {
+    acc += `/${seg}`;
+    const isLast = i === segments.length - 1;
+    ol.append(makeItem(humanize(seg), isLast ? null : acc));
+  });
+
+  nav.append(ol);
+  main.prepend(nav);
+}
+
 function loadErrorPage(main) {
   if (window.errorCode === '404') {
     const fragmentPath = '/fragments/404';
@@ -386,6 +442,10 @@ async function loadEager(doc) {
       await runEager(document, { audiences: AUDIENCES }, getExperimentationContext());
     }
     decorateMain(main);
+    // Path-derived breadcrumb at the top of interior pages (not on home).
+    // Placed here (not in decorateMain) so it targets only the page's real
+    // <main> and never the decorated nav/footer fragments.
+    buildBreadcrumb(main);
     // Re-decorate EDS block markup that a Target offer injects after decoration has
     // already run (e.g. a replaceHtml offer that brings in authored block HTML). Started
     // before martechEager applies propositions so the observer is live when offers land.

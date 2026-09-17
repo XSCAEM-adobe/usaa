@@ -1,0 +1,16 @@
+{
+  "variantName": "card-filter",
+  "baseBlock": "card-filter",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "category-filter",
+    "imagePattern": "none",
+    "structure": "row of selectable category chips"
+  },
+  "contentPattern": "A row of selectable category chips (All cards + authored categories) that show/hide the credit-card product groups on the page.",
+  "usage": "Card-type filter on the credit cards page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["card-filter"]
+}

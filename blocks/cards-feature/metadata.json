@@ -9,8 +9,18 @@
     "structure": "icon + heading + text"
   },
   "contentPattern": "Grid of three feature cards, each with an icon, a heading and a short descriptive paragraph.",
-  "usage": "Membership benefits grid on the home page.",
+  "usage": {
+    "description": "Membership benefits grid on the home page.",
+    "pagesUsing": [
+      "/banking/checking",
+      "/banking/credit-cards-public"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-16T21:20:36.533666"
+  },
   "canonicalModel": "standalone",
   "options": [],
-  "memberVariantIds": ["cards-feature"]
+  "memberVariantIds": [
+    "cards-feature"
+  ]
 }

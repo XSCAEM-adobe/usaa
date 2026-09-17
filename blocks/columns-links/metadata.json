@@ -9,8 +9,17 @@
     "structure": "columns-of-heading-plus-linklist"
   },
   "contentPattern": "Multiple columns of categorized link lists (e.g. Insurance, Banking, Investing, Advice, Military Life, Contact us), each with a heading and a list of links.",
-  "usage": "\"Other products and services\" wayfinding directory on the home page.",
+  "usage": {
+    "description": "\"Other products and services\" wayfinding directory on the home page.",
+    "pagesUsing": [
+      "/banking/checking"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-16T20:44:01.801Z"
+  },
   "canonicalModel": "standalone",
   "options": [],
-  "memberVariantIds": ["columns-links"]
+  "memberVariantIds": [
+    "columns-links"
+  ]
 }

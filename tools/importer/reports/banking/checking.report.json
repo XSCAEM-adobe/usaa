@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://www.usaa.com/banking/checking?wa_ref=pub_home_banner_bank_checking",
+  "path": "banking/checking",
+  "timestamp": "2026-09-16T23:58:36.177Z",
+  "title": "Checking Accounts | USAA",
+  "template": "banking",
+  "blocks": [
+    "hero-banner",
+    "cards-feature",
+    "cards-feature",
+    "columns-spotlight",
+    "columns-spotlight",
+    "columns-spotlight",
+    "cards-steps",
+    "table-rate",
+    "faq-expand",
+    "cards-article",
+    "hero-callout",
+    "columns-links"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://www.usaa.com/banking/credit-cards-public?wa_ref=pub_home_banner_bank_credit_card",
+  "path": "banking/credit-cards-public",
+  "timestamp": "2026-09-16T23:33:24.796Z",
+  "title": "Apply for a Credit Card | USAA",
+  "template": "banking-2",
+  "blocks": [
+    "cc-hero",
+    "card-filter",
+    "cards-creditcard",
+    "cards-creditcard",
+    "cards-creditcard",
+    "cards-creditcard",
+    "cards-feature",
+    "cards-feature",
+    "cards-article",
+    "faq-expand"
+  ]
+}

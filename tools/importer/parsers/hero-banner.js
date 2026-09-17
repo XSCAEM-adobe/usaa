@@ -34,15 +34,33 @@ export default function parse(element, { document }) {
   // Row 2: background image (optional)
   if (bgImage) cells.push([bgImage]);
 
-  // Row 3: content cell (single column – all elements in one cell)
+  // Row 3: content cell (single column – all elements in one cell).
+  // USAA billboards render both a desktop and a hidden mobile variant, so the
+  // same heading/paragraph/CTA can appear twice. De-dupe by normalized text so
+  // the hero shows each line once.
+  const seen = new Set();
+  const pushUnique = (node, arr) => {
+    const key = `${node.tagName}:${(node.textContent || '').replace(/\s+/g, ' ').trim()}`;
+    if (!key.endsWith(':') && seen.has(key)) return; // skip exact duplicate (keep empties)
+    seen.add(key);
+    arr.push(node);
+  };
+
   const contentCell = [];
-  if (heading) contentCell.push(heading);
+  if (heading) pushUnique(heading, contentCell);
   // Include subsequent headings (subheading) that are not the primary heading.
   const allHeadings = Array.from(contentRoot.querySelectorAll('h1, h2, h3'))
     .filter((h) => !h.classList.contains('rds-globals__screen-reader') && h !== heading);
-  allHeadings.forEach((h) => contentCell.push(h));
-  paragraphs.forEach((p) => contentCell.push(p));
-  ctaLinks.forEach((a) => contentCell.push(a));
+  allHeadings.forEach((h) => pushUnique(h, contentCell));
+  paragraphs.forEach((p) => pushUnique(p, contentCell));
+  // De-dupe CTAs by href so repeated "Apply now" links collapse to one.
+  const ctaSeen = new Set();
+  ctaLinks.forEach((a) => {
+    const href = a.getAttribute('href') || a.textContent.trim();
+    if (ctaSeen.has(href)) return;
+    ctaSeen.add(href);
+    contentCell.push(a);
+  });
   cells.push([contentCell]);
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'hero-banner', cells });

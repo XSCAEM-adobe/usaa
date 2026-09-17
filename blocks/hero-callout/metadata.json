@@ -1,0 +1,16 @@
+{
+  "variantName": "hero-callout",
+  "baseBlock": "hero",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "cta-banner",
+    "imagePattern": "side-illustration",
+    "structure": "heading + button + secondary link + side illustration"
+  },
+  "contentPattern": "Full-width solid promotional CTA banner: heading, a primary button, a secondary link, and an optional circular illustration on the side.",
+  "usage": "Closing \"Keep more of your money\" CTA banner on the checking page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["hero-callout"]
+}

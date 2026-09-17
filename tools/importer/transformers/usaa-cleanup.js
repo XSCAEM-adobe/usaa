@@ -15,6 +15,20 @@ export default function transform(hookName, element, payload) {
     WebImporter.DOMUtils.remove(element, [
       '.globalPageHeader-navMask', // nav overlay mask
     ]);
+
+    // Hidden scaffolding that leaks junk text into parsed blocks (esp. the
+    // banking/checking billboard): server-name marker ("mobile domain:…"),
+    // skeleton-loader placeholders ("false" / "noSkeletonLoader"), and the
+    // hidden "Default Text" CTA (an inline display:none anchor). Scoped to these
+    // specific markers rather than all [hidden]/[aria-hidden] nodes, which would
+    // wrongly strip visible "see note" superscripts and screen-reader labels.
+    WebImporter.DOMUtils.remove(element, [
+      '.server-name',
+      '.skeleton-loader',
+      '.skeleton-loader-variation',
+      'a[style*="display:none"]',
+      'a[style*="display: none"]',
+    ]);
   }
 
   if (hookName === TransformHook.afterTransform) {
@@ -22,7 +36,8 @@ export default function transform(hookName, element, payload) {
     //   skip link (line 3), global header (line 6), header element (line 7),
     //   footer (line 1945), footer nav (line 1948), footer content (line 2030).
     WebImporter.DOMUtils.remove(element, [
-      'a.usaa-skipToContent', // "Skip to Content" link
+      'a.usaa-skipToContent', // "Skip to Content" link (home page markup)
+      'a[href="#body-wrapper--main"]', // "Skip to Content" link (banking markup)
       '.usaa-globalHeader', // global site header wrapper
       'header', // header element (global nav)
       'footer', // page footer element

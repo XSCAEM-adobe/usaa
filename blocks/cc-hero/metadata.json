@@ -1,0 +1,16 @@
+{
+  "variantName": "cc-hero",
+  "baseBlock": "hero",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "background",
+    "structure": "eyebrow + headline + body + CTAs over full-bleed lifestyle photo"
+  },
+  "contentPattern": "Credit-cards storefront hero: full-bleed lifestyle background photo with an eyebrow, a large headline (Earn 1.5% cash back), supporting bonus copy, and Apply / Join CTAs overlaid on the left.",
+  "usage": "Top hero on the credit cards page.",
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": ["cc-hero"]
+}
