@@ -508,17 +508,20 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul a:focus-visible
   color: var(--nav-hover-color);
 }
 
+/* Top-level nav items authored as button links (e.g. "Membership") should read
+   as plain white nav links like the rest of the bar — not dark button text. */
 header nav .nav-sections a.button:any-link,
 header nav .nav-sections button.button {
   border: 0;
   border-radius: 0;
   background: transparent;
-  color: var(--text-color);
+  color: #fff;
   padding: 0;
   min-width: 0;
+  font-size: var(--nav-primary-size);
   font-weight: var(--nav-primary-weight);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 header nav .nav-sections a.button:any-link:hover,
@@ -529,6 +532,7 @@ header nav .nav-sections button.button:focus-visible {
   border: 0;
   transform: none;
   box-shadow: none;
+  color: var(--nav-hover-color);
 }
 
 /* CTA button in header tools */
