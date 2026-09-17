@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Import — cross-org DA copy</title>
+  <link rel="stylesheet" href="library-import.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="head">
+      <h1>Library Import</h1>
+      <p class="sub">Copy a DA block library (docs + templates) from another org/site into this one, using your own DA session.</p>
+      <p id="status" class="status">Connecting to Document Authoring…</p>
+    </header>
+
+    <section class="card">
+      <div class="grid">
+        <label>Source org
+          <input id="src-org" type="text" value="scdemos" spellcheck="false" />
+        </label>
+        <label>Source site
+          <input id="src-site" type="text" value="demo" spellcheck="false" />
+        </label>
+        <label>Destination org
+          <input id="dst-org" type="text" placeholder="from DA context" spellcheck="false" />
+        </label>
+        <label>Destination site
+          <input id="dst-site" type="text" placeholder="from DA context" spellcheck="false" />
+        </label>
+      </div>
+
+      <label class="full">Paths to copy (comma-separated, relative to site root)
+        <input id="paths" type="text" value="docs/library" spellcheck="false" />
+      </label>
+
+      <div class="opts">
+        <label class="check"><input id="dry-run" type="checkbox" checked /> Dry run (list only — no writes)</label>
+        <label class="check"><input id="rewrite" type="checkbox" checked /> Rewrite <code>content.da.live/&lt;src&gt;</code> → <code>&lt;dest&gt;</code> in text files</label>
+      </div>
+
+      <button id="start" class="btn">Start import</button>
+      <p class="hint">Tip: run a dry run first to see exactly what would copy. Then uncheck “Dry run” to write into the destination.</p>
+    </section>
+
+    <section class="card">
+      <h2>Log</h2>
+      <div id="log" class="log" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script type="module" src="library-import.js"></script>
+</body>
+</html>
